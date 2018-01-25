@@ -1,0 +1,82 @@
+	header,nav,section,article,footer{
+		margin: 10px 70px; 
+		padding: 10px ;
+	}
+	header{
+		background-color: rgba(0, 0, 255, 0.2);
+		height: 50px;
+	}
+	nav{
+		background-color: #44aabb;
+	}
+	section{
+		/*background-color: #34D555;*/
+		width : 48em;
+		height: 300px;
+		display : inline-block;
+	    width : 48em;
+	    height : 40em;
+	    border-width : 0.1em;
+	    border-color : black;
+	    float: left;
+
+	}
+	aside
+	{
+		background-color: rgba(103, 155, 229, 0.3);
+	    width : 12em;
+	    height: 300px;
+	    display: inline-block;
+	    width: 12em;
+	    /* height: 40em; */
+	    border-width: 0.1em;
+	    /* border-style: dashed; */
+	    border-color: black;
+	    float: left;
+	    margin-top: -221px;
+	    padding: 15px;
+	}
+	article{
+		background-color: #33aaff;
+	}
+	footer{
+		background-color: #44bbff;
+	}
+	label{
+		padding: 5px;
+	}
+
+	#left-header{
+		/*margin-left: 10px;*/
+		position: absolute;
+		list-style-type: none;
+		float: right;
+	}
+	#left-header li{
+		display: inline;
+	}
+	li a{
+		display: inline;
+		padding: 0px 10px;
+		font-weight: bold;
+	}
+	
+	#right-header{
+		float: right;
+    	padding-right: 100px;
+	}
+	#right-header img{
+		display: inline;
+		position: absolute;
+		right: 21%;
+		width: 60px;
+	}
+	#container{
+		margin-left: 20%;
+	}
+	.item{
+		display: inline-block;
+		width: 9%;
+		padding-left: 10%;
+
+	}

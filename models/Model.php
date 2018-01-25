@@ -1,10 +1,12 @@
 <?php
+// namespace App\Models\Model;
 class Model{
+
 	public $conn;
 
 	public function __construct(){
 		////CHANGE THIS CREDINTIALS TO YOURS YA MENNA , HAGER AND ALAA
-		$this->conn = new mysqli("localhost","rania","rania2017","Cafeteria");
+		$this->conn = new \mysqli("localhost","rania","rania2017","Cafeteria");
 		if (! $this->conn ) {
 			echo "connection error";
 		}
@@ -80,6 +82,32 @@ class Model{
 		//$stmt->close();
 		echo "tmam";
 		return true;
+	}
+
+	public function select($variableList)
+	{
+		$keys = array();
+		
+		//to remove last element as it's info about obj
+		array_pop($variableList);
+
+		foreach ($variableList as $key => $value) {
+			$keys[] = $key;
+		}
+
+		$query = sprintf("select %s from %s",implode(',',$keys),$this->getTableName());
+		echo "query : ".$query."<br>";
+
+		if(! $result_set = $this->prepareStmt($query)){
+			echo $this->conn->connect_error;
+					echo " msh tmam";
+
+			return false;
+		}
+		//$stmt->close();
+		echo "tmam";
+		return true;
+
 	}
 
 	/**
