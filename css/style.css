@@ -12,18 +12,21 @@
 	section{
 		/*background-color: #34D555;*/
 		width : 48em;
-		height: 300px;
+		/*height: 300px;*/
+		height: 150px;
 		display : inline-block;
 	    width : 48em;
-	    height : 40em;
+	  /*  height : 40em;*/
 	    border-width : 0.1em;
 	    border-color : black;
 	    float: left;
+	    border: 2px;
 
 	}
 	aside
 	{
-		background-color: rgba(103, 155, 229, 0.3);
+		/*background-color: rgba(103, 155, 229, 0.3);*/
+		background-color: lightgray;
 	    width : 12em;
 	    height: 300px;
 	    display: inline-block;
@@ -74,7 +77,7 @@
 		right: 21%;
 		width: 60px;
 	}
-	#container{
+	.container{
 		margin-left: 20%;
 	}
 	.item{
@@ -118,4 +121,7 @@
 	    background-position: center;
 	    margin-top: 1px;
 	    position: absolute;
+	}
+	.latest_order_header{
+		margin-left: 105px;
 	}

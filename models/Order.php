@@ -18,6 +18,18 @@ class Order extends Model{
 		parent::__construct();	
 	}
 
+	public function selectLastOrderId()
+	{
+		$query = sprintf("select max(id) from %s where user_id=%s",$this->getTableName(),$_SESSION["user_id"]);
+
+		if(! $result_set = $this->prepareStmt($query)){
+			echo $this->conn->connect_error;
+			return false;
+		}
+		//$stmt->close();
+		return $this->getData($result_set)[0][0];
+	}
+
 	public function insertOrder()
 	{
 		if($this->connect()){
@@ -60,12 +72,53 @@ class Order extends Model{
 			echo "connection error";
 		}
 	}
+	public function selectLastOrderProducts()
+	{
+		$order_id = $this->selectLastOrderId();
+		$query = sprintf("select product_id from order_products where order_id=%s order by order_id desc",$order_id,$_SESSION['user_id']);
+
+		if(! $result_set = $this->prepareStmt($query)){
+			echo $this->conn->connect_error;
+			return false;
+		}
+		//$stmt->close();
+		//return 
+		$product_ids = $this->getColumnData($result_set);
+		echo "sss:".json_encode($product_ids);
+		$query = sprintf("select * from products where id in (%s)",implode(",", ($product_ids)));
+
+		if(! $result_set = $this->prepareStmt($query)){
+			echo $this->conn->connect_error;
+			return false;
+		}
+		//$stmt->close();
+		return  $this->getData($result_set); 
+
+		
+	}
+	public function insertOrderProducts($values)
+	{
+		echo json_encode($values);
+		$query = sprintf("insert into order_products (product_id,quantity,order_id) values (%s);",implode(',',$values));
+
+		echo "query : ".$query."<br>";
+
+		if(! $result_set = $this->prepareStmt($query)){
+			echo $this->conn->connect_error;
+					echo " msh tmam";
+
+			return false;
+		}
+		//$stmt->close();
+		echo "tmam";
+		return true;
+	}
 
 
 	//to be removed later 
 	public function selectProducts()
 	{
-		$query = sprintf("select * from products");
+		$query = sprintf("select * from products where quantity > 0");
 
 		if(! $result_set = $this->prepareStmt($query)){
 			echo $this->conn->connect_error;

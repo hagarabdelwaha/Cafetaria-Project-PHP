@@ -39,9 +39,7 @@ class Model{
 
 	public function prepareStmt($query){
 			if(! $stmt = $this->conn->prepare($query) ){
-					     echo "Prepare failed: (" . $this->conn->errno . ") " . $this->conn->error;
-
-						echo " msh tmam1";
+			    echo "Prepare failed: (" . $this->conn->errno . ") " . $this->conn->error;
 				return false;
 			}
 			$id=NULL;
@@ -68,6 +66,17 @@ class Model{
             }
             $i++;
             print "<br>";
+        }
+        return $data;
+	}
+
+	public function getColumnData($result_set)
+	{
+		$data = array();
+		$i=0;
+		while ($row = $result_set->fetch_array(MYSQLI_NUM))
+        {        
+            $data[]=$row[0];
         }
         return $data;
 	}
@@ -103,7 +112,6 @@ class Model{
 			return false;
 		}
 		//$stmt->close();
-		echo "tmam";
 		return true;
 	}
 
@@ -130,7 +138,6 @@ class Model{
 			return false;
 		}
 		//$stmt->close();
-		echo "tmam";
 		return $this->getData($result_set);
 
 	}

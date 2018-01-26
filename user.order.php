@@ -16,7 +16,26 @@
 </header>
 
 <section>
-	<div id="container">
+
+	<div class ="container">
+	<h3 class="latest_order_header">Latest Order</h3>
+		<?php 
+		foreach($_SESSION["latest_orders"] as $product ){ ?>
+		<figure class="item" name="<?php echo $product[1]; ?>"
+		price="<?php echo $product[2]; ?>" id="<?php echo $product[0]; ?>" >
+			<img src="imgs/can2.png" width="35px">
+			<figcaption><?php echo $product[1]; ?></figcaption>
+			<figcaption><?php echo $product[2]."LE" ; ?></figcaption>
+			<input type="hidden" class="quantity" value="<?php echo $product[3]; ?>">
+		</figure>
+		<?php } ?>
+	</div>
+	<hr>
+</section>
+
+<section>
+	<br>
+	<div id="container" class="container">
 		<?php 
 		foreach($_SESSION["products"] as $product ){ ?>
 		<figure class="item" name="<?php echo $product[1]; ?>"

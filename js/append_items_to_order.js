@@ -13,9 +13,17 @@ for (var i = figures.length - 1; i >= 0; i--) {
 
 		var input = document.createElement("input");
 		input.id = this.id;
+		input.name="product_quantity[]";
 		input.style.width = "30px";
 		input.style.display ="inline-block";
 		input.value = "1";
+
+		var productIdHidden = document.createElement("input");
+		productIdHidden.name="product_id[]";
+		productIdHidden.value = this.id;
+		productIdHidden.type = "hidden";
+
+
 		var quantity = this.getElementsByClassName("quantity")[0].value;
 		console.log(quantity);
 		var plusBtn = document.createElement("button");
@@ -42,6 +50,7 @@ for (var i = figures.length - 1; i >= 0; i--) {
 
 		productDiv.appendChild(nameLabel);
 		productDiv.appendChild(input);
+		productDiv.appendChild(productIdHidden);
 		productDiv.appendChild(plusBtn);
 		productDiv.appendChild(minusBtn);
 		productDiv.appendChild(priceLabel);
