@@ -2,6 +2,7 @@ var container=document.getElementsByClassName('container')[0];
 
 var lenArr;
 var ordersArr;
+var productsInfo_arr;
 var table2Created=0;
 var table2hasRows=0;
 var drinksDisplayed=0;
@@ -42,7 +43,6 @@ function TableUserOrder(){
 
 function fillTableUserOrder(date,total){
 		if(!table2hasRows){
-					console.log(date.split(','),"ddd",total)
 					var len=date.split(',').length;
 					var dateArr=date.split(',');
 					var totalArr=total.split(',');
@@ -57,7 +57,6 @@ function fillTableUserOrder(date,total){
 					table2hasRows=1;
 		 }
 		 else{
-			 console.log(container.children)
 			 if(container.children.length==7)
 			 {
 				 container.removeChild(container.lastChild);
@@ -66,7 +65,6 @@ function fillTableUserOrder(date,total){
 			 var len=table2.children.length;
 			 for(var c=1;c<len;c++){
 			   table2.removeChild(table2.children[1]);
-
 				table2hasRows=0;
 			}
 		 }
@@ -75,15 +73,11 @@ function fillTableUserOrder(date,total){
 function showUserOrder(e){
 
 	userName=e.target.nextSibling.textContent;
-	  console.log(userName)
-	for(var i=0;i<lenArr;i++)
-	{
-		orderU=ordersArr[i].split(':');
-	  console.log(userName,orderU[0],userName==orderU[0])
-		if(userName==orderU[0]){
 
-		  console.log(orderU[2]);
-			 console.log(orderU[3]);
+	for(var i=0;i<lenArr;i++) {
+
+		orderU=ordersArr[i].split(':');
+		if(userName==orderU[0]){
 			 TableUserOrder()
 			fillTableUserOrder(orderU[2],orderU[3])
 		 }
@@ -100,12 +94,26 @@ function creatdrink(drinkname){
 	td.appendChild(img)
 	 return td;
 }
-
-function creatdrinkName(drinkname){
+function getProductprice(drinkname)
+{
+	var len=productsInfo_arr.length;
+	for(var i=0;i<len;i++)
+	 {
+     prod_info=productsInfo_arr[i].split(",");
+		 if(drinkname==prod_info[0])
+		   return prod_info[1];
+   }
+}
+function creatdrinkName(drinkname,price){
 
 	var td=document.createElement('td');
 	td.setAttribute('class','drinksRaw');
-	var tdtext=document.createTextNode(drinkname);
+	var tdtext;
+	if(price!=0)
+	    tdtext=document.createTextNode(drinkname+" :"+price+"$");
+	else {
+		 tdtext=document.createTextNode(drinkname);
+	}
 	td.appendChild(tdtext)
 		 return td;
 }
@@ -145,11 +153,12 @@ if(!drinksDisplayed){
 						}
 						tableimg.appendChild(tr1);
 						for(var i=0;i<len;i++){
-							tr2.appendChild(creatdrinkName(orderTypeArr[i]))
+							var price=getProductprice(orderTypeArr[i]);
+							tr2.appendChild(creatdrinkName(orderTypeArr[i],price))
 						}
 						tableimg.appendChild(tr2);
 						for(var i=0;i<len;i++){
-							tr3.appendChild(creatdrinkName(orderQuan[i]))
+							tr3.appendChild(creatdrinkName(orderQuan[i],0))
 						}
 					tableimg.appendChild(tr3);
 
@@ -185,10 +194,12 @@ function update_Checks_HTML(name,total){
 	  container.appendChild(table);
 
 }
-function update_Checks(length,OrdersArray){
+function update_Checks(length,OrdersArray,productInfo){
 
    lenArr=length;
 	 ordersArr=OrdersArray;
+	 productsInfo_arr=productInfo;
+
 	 console.log(length,OrdersArray);
 	 buildTable();
 	 for(var i=0;i<length;i++)

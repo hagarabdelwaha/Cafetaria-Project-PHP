@@ -1,5 +1,7 @@
 var container=document.getElementsByClassName('container')[0];
 var orders_displayed=0;//orders.length;
+var productsInfo_Arr;
+var order_date;//finished ,delivered order;
 
 
 function createTabledata(element,name){
@@ -8,6 +10,17 @@ function createTabledata(element,name){
 	var thtext=document.createTextNode(name);
 	 th.appendChild(thtext)
 	 return th;
+}
+
+function getProductprice(drinkname)
+{
+	var len=productsInfo_arr.length;
+	for(var i=0;i<len;i++)
+	 {
+     prod_info=productsInfo_arr[i].split(",");
+		 if(drinkname==prod_info[0])
+		   return prod_info[1];
+   }
 }
 
 function creatdrink(drinkname){
@@ -24,8 +37,10 @@ function creatdrink(drinkname){
 function creatdrinkName(drinkname){
 
 	var td=document.createElement('td');
-	td.setAttribute('class',drinkname);
-	var tdtext=document.createTextNode(drinkname);
+	td.setAttribute('class','drinksRaw');
+	var tdtext;
+  price=getProductprice(drinkname);
+	tdtext=document.createTextNode(drinkname+" :"+price+"$");
 	td.appendChild(tdtext)
 		 return td;
 }
@@ -38,9 +53,21 @@ var td=document.createElement('td');
 	 td.appendChild(tdtext)
 	 return td;
 }
-function update_html( orderDate,name,Room,extRoom,drinks,drinksCount,total){
-	 console.log("update html js")
-	 console.log(container)
+
+function remove_order(e){
+
+	var del_table=e.target.parentElement.parentElement.parentElement;
+	order_date=del_table.children[1].children[0];
+	container.removeChild(del_table);
+	//console.log(order_date,order_date.innerHTML,typeof order_date);
+	document.getElementById('done_order').setAttribute("value",order_date.innerHTML);
+	//console.log(document.getElementById('done_order').value);
+  document.getElementById("form").submit();
+}
+
+function update_html( orderDate,name,Room,extRoom,drinks,drinksCount,total,productsInfo_arr){
+
+	productsInfo_Arr=productsInfo_arr;
 	var table=document.createElement('table');
 	table.setAttribute('class','t01');
 
@@ -61,6 +88,7 @@ function update_html( orderDate,name,Room,extRoom,drinks,drinksCount,total){
 		var btn=document.createElement('button');
 		btn.setAttribute('class',"tablinks")
 		var tdtext=document.createTextNode("Deliver");
+		btn.addEventListener('click',remove_order);
 		btn.appendChild(tdtext)
 		td.appendChild(btn)
     r2.appendChild(td);
@@ -71,7 +99,7 @@ function update_html( orderDate,name,Room,extRoom,drinks,drinksCount,total){
 
 		var r4= document.createElement("tr");
 			for(var i=0;i<drinks.length;i++)
-	 		    r4.appendChild(creatdrinkCount(drinks[i]));
+	 		    r4.appendChild(creatdrinkName(drinks[i]));
 
 		var r5= document.createElement("tr");
 			for(var i=0;i<drinksCount.length;i++)

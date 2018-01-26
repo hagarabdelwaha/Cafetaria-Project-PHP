@@ -53,11 +53,15 @@
                  usersOrders = '<?php if(!empty($_REQUEST['usersData']) ){
 		                echo trim($_REQUEST['usersData']);
 									}else echo "null";?>';
-									
+
+									productInfo = '<?php if(!empty($_REQUEST['productInfo']) ){
+										 echo trim($_REQUEST['productInfo']);
+									 }else echo "null";?>';
+
                   if(usersOrders!='null')
                   {
 										console.log("herr",usersOrders.split('$').length);
-										update_Checks(usersOrders.split('$').length,usersOrders.split('$'))
+										update_Checks(usersOrders.split('$').length,usersOrders.split('$'),productInfo.split('$'))
 									}
 
 							 </script>
