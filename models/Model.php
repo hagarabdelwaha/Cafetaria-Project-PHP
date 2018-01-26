@@ -39,17 +39,46 @@ class Model{
 
 	public function prepareStmt($query){
 			if(! $stmt = $this->conn->prepare($query) ){
-					     echo "Prepare failed: (" . $this->conn->errno . ") " . $this->conn->error;
-
-						echo " msh tmam1";
+			    echo "Prepare failed: (" . $this->conn->errno . ") " . $this->conn->error;
 				return false;
 			}
 			$id=NULL;
 			if(! $stmt->execute()){
 				  echo "Prepare failed: (" . $this->conn->errno . ") " . $this->conn->error;
 			}
+			$result = $stmt->get_result();
+
 			$stmt->close();
-			return true;
+			return  $result;  
+	}
+
+	public function getData($result_set)
+	{
+		$data = array();
+		$i=0;
+		while ($row = $result_set->fetch_array(MYSQLI_NUM))
+        {
+            foreach ($row as $key=> $r)
+            {
+            	//echo "r".json_encode($r)
+            	$data[$i][]=$r;
+            //    print "$key "."$r";
+            }
+            $i++;
+            print "<br>";
+        }
+        return $data;
+	}
+
+	public function getColumnData($result_set)
+	{
+		$data = array();
+		$i=0;
+		while ($row = $result_set->fetch_array(MYSQLI_NUM))
+        {        
+            $data[]=$row[0];
+        }
+        return $data;
 	}
 
 	
@@ -66,9 +95,12 @@ class Model{
 
 		foreach ($variableList as $key => $value) {
 			$keys[] = $key;
-			$values[] = "'".$value."'";
+			if($value!=NULL)
+				$values[] = "'".$value."'";
+			else
+				$values[] = 'NULL';
 		}
-
+		echo json_encode($values);
 		$query = sprintf("insert into ".$this->getTableName()." (%s) values (%s);",implode(',',$keys),implode(',',$values));
 
 		echo "query : ".$query."<br>";
@@ -80,7 +112,6 @@ class Model{
 			return false;
 		}
 		//$stmt->close();
-		echo "tmam";
 		return true;
 	}
 
@@ -95,7 +126,9 @@ class Model{
 			$keys[] = $key;
 		}
 
+		//change this query after
 		$query = sprintf("select %s from %s",implode(',',$keys),$this->getTableName());
+		// $query = sprintf("select * from products");
 		echo "query : ".$query."<br>";
 
 		if(! $result_set = $this->prepareStmt($query)){
@@ -105,8 +138,7 @@ class Model{
 			return false;
 		}
 		//$stmt->close();
-		echo "tmam";
-		return true;
+		return $this->getData($result_set);
 
 	}
 
