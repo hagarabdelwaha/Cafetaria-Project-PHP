@@ -111,7 +111,7 @@
          <button class="tablinks">Checks</button>
      </div>
 
-       <form method="post" action="done1.php" >
+       <form method="post" action="controllers/adminController.php" >
 
        <h1 align="left">Add User</h1>
        <hr>
@@ -127,7 +127,8 @@
 <br />
        <label><b>Confirm Password</b></label>
        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-       <span class="error">* <?php echo $_GET['confirmErr'];?></span>
+       <span class="error">* <?php if(isset($_GET['confirmErr'])){echo $_GET['confirmErr'] ;} else {echo "";}?></span>
+
 
 <br />
        <label><b>Room No.</b></label>

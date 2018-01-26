@@ -42,16 +42,17 @@ button:hover {
 <h1 align="center">Cafetria</h1>
 
   <div class="container">
-    <form method="post" action="done2.php">
+    <form method="post" action="controllers/userController.php">
 
     <label><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
-    <span class="error">* <?php echo $_GET['mailErr'];?></span>
+    <span class="error">* <?php if(isset($_GET['mailErr'])){echo $_GET['mailErr'] ;} else {echo "";}?></span>
 
 
     <label><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
-    <span class="error">* <?php echo $_GET['pswErr'];?></span>
+    <span class="error">* <?php if(isset($_GET['pswErr'])){echo $_GET['pswErr'] ;} else {echo "";}?></span>
+
 
     <button type="submit">Login</button>
   </form>
