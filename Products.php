@@ -7,7 +7,6 @@ $product=new Product();
 $pros=$product->getAllProducts();
 
 
-
               echo "<table border=1>";
               echo "<tr> 
                 
@@ -19,34 +18,42 @@ $pros=$product->getAllProducts();
 
                 $rowid;
                 $availability;
+
 		     while($row= $pros->fetch(PDO::FETCH_ASSOC))
 		     {
                    
-               //show users data
+               //show products data
 		     	echo "<tr>";
                foreach ($row as $key => $value) 
                         {
                        
+                     
 
-                        	if($key=="id")
-                        	{
-                        		$rowid=$value;
-                        	}
-                        	else if($key=="quantity")
-                        	{
-                        		if($value >0)
-                        		{
-                        			$availability="available";
-                        		}else
-                        		{
-                        			$availability="unavailable";
-                        		}
-                           
-                        	}
-                        	else
-                        	{
-                        		echo "<td>$value</td>";
-                        	}
+                            	if($key=="id")
+                            	{
+                            		$rowid=$value;
+                            	}else if($key=="quantity")
+                            	{
+                            		if($value >0)
+                            		{
+                            			$availability="available";
+                            		}else
+                            		{
+                            			$availability="unavailable";
+                            		}
+                               
+                            	}else if($key=="imagepath") //imagePath
+                                {
+
+                                    echo ' <td> <img src="'.$value.'" width="100" height="100"/> </td> ';
+                                   
+                                }
+                            	else 
+                            	{
+
+                            		echo "<td>$value</td>";
+
+                            	}
 							
 			             }  
                 
@@ -62,10 +69,11 @@ $pros=$product->getAllProducts();
 
 		         echo "</table>";
 		     
-
+               
 
 
 
 
 
 ?>
+

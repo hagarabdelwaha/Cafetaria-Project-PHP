@@ -49,17 +49,29 @@ if(empty($_POST['category'])){
 
 //*************************************check name*******************
     $obj=new Product();
-
     $obnm=trim($_POST['product_name']);
+    
+    if($obnm !== "")
+    {
+    	 
 
-    $obj->name=$obnm;
-    $pro_exist=$obj->check_product_name();
+	    $obj->name=$obnm;
+	    $pro_exist=$obj->check_product_name();
 
-	if($pro_exist > 0)
-	{
-		$nameerror="Product Name is exist please enter Unique Name";
-		$check=true;
-	}
+		if($pro_exist > 0)
+		{
+			$nameerror="Product Name is exist please enter Unique Name";
+			$check=true;
+		}
+		
+
+    }else
+    {
+    	$nameerror="Enter Product Name ";
+			$check=true;
+    }
+ 
+   
 
 
 
@@ -78,9 +90,10 @@ $price=$_POST['product_price'];
 $quant=$_POST['product_quantity'];
 $cat=$_POST['category'];
 
+$pimg=$_FILES['product_picture']['name'];
 
  $errors=$pherror.'</br> '.$nameerror.$n.$pr.$pq.$pc;
- header("location:Add_Product.php?errormsg=$errors&price=$price&name=$name&cat=$cat&quant=$quant");
+ header("location:Add_Product.php?errormsg=$errors&price=$price&name=$name&cat=$cat&quant=$quant&img=$pimg");
  exit;
 
 }

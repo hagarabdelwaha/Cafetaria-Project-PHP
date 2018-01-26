@@ -2,6 +2,13 @@
 session_start();
 require_once('product_class.php');
 
+require_once('category_class.php');
+
+$cats=new Category();
+
+$cats_arr=$cats->get_Categories();
+
+
 
 if(!empty($_GET['id']))
 {
@@ -81,10 +88,41 @@ if(!empty($_GET['id']))
  	<td><label>Category</label></td>
  	<td>
  		<select  name="category"   required>
- 			<option class="category" name="category" value="" selected="selected"></option>
+
+          <?php
+
+              $cid;
+              $catnam;
+             
+              while ($row=$cats_arr->fetch(PDO::FETCH_ASSOC))
+               {
+                      
+                  foreach ($row as $key => $value) 
+                        {
+                          if($key=='id')
+                          {
+                              $cid=$value;
+                          }else if($key=='name')
+                          {
+                            $catnam=$value;
+                          }
+
+                          
+                        }
+                      
+                       echo '<option class="category"  name="category" value=" ';
+                       echo $cid.' " ';
+                        echo '>'.$catnam.'</option> ';  
+                
+               }
+
+
+             ?>
+
+ 			<!-- option class="category" name="category" value="" selected="selected"></option>
  			<option class="category"  name="category"  value="1" >Hot Drinks</option>
  			<option class="category"  name="category"   value="2" >Juice </option>
- 			<option class="category"  name="category"  value="3" >cold Drinks</option>
+ 			<option class="category"  name="category"  value="3" >cold Drinks</option> -->
  			
  		</select>
  	</td>
