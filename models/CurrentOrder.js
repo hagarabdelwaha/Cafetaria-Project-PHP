@@ -16,7 +16,7 @@ function creatdrink(drinkname){
 	 td.setAttribute('class','drinksRaw')
 	var img=document.createElement('img');
 	img.setAttribute('class','drink')
-	img.src="imgs/"+drinkname+'.png'
+	img.src=drinkname+'.png'
 	td.appendChild(img)
 	 return td;
 }
@@ -39,8 +39,8 @@ var td=document.createElement('td');
 	 return td;
 }
 function update_html( orderDate,name,Room,extRoom,drinks,drinksCount,total){
-	 // console.log("update html js")
-	 // console.log(container)
+	 console.log("update html js")
+	 console.log(container)
 	var table=document.createElement('table');
 	table.setAttribute('class','t01');
 
@@ -90,6 +90,7 @@ function update_html( orderDate,name,Room,extRoom,drinks,drinksCount,total){
 	 table.appendChild(r4)
 	 table.appendChild(r5)
 	 table.appendChild(r6);
+//	 console.log(table)
 	 container.appendChild(table);
 
 }

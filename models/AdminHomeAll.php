@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Admin Home</title>
-    <link rel="stylesheet" type="text/css" href="css/Checks.css">
+    <link rel="stylesheet" type="text/css" href="Checks.css">
   </head>
   <body>
 <div class="container">
@@ -14,7 +14,7 @@
         <button class="tablinks">Users</button>
         <button class="tablinks">Manual</button>
         <button class="tablinks">Checks</button>
-        <img id="userImg" src="imgs/user.png"/>
+        <img id="userImg" src="user.png"/>
         <label name="UserName">user name Islam</label>
     </div>
 
