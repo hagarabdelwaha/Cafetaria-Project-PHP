@@ -3,10 +3,21 @@
 function __autoload($name){
 	include_once "../models/".$name.".php";
 }
+session_start();
 
 // include("../models/orders.php");
 $order = new Order();
-$order->selectOrders();
+if (!isset($_POST)) {
+	$_SESSION["products"] =( $order->selectProducts());
+	$_SESSION["rooms"] =( $order->selectRooms());
+
+	//echo json_encode($_SESSION["products"] );
+	header("location:../user.order.php");
+	exit;
+}
+
+
+
 
 /**
 	public $id;
@@ -16,18 +27,31 @@ $order->selectOrders();
 	public $status;
 	public $notes;
 **/
+
 //remove this comment when session id is ready
-// $user_id = 2;//$SESSION["id"];
+$order->id = NULL;
+$order->user_id = 1;//$SESSION["id"];
 
 // //get current date
-// $date = date("Y-m-d");
-
-// $products = $_POST["products[]"];
-// $prices = $_POST["prices[]"];
+$order->date = date("Y-m-d");
 // //calculate price from products table
-// $price = 0 ;
-
+$order->price = $_POST["total_price"];
 // //inital state 
-// $status="processing";
+$order->status="processing";
 
-// $notes = $_POST['notes'];
+$order->notes = $_POST['notes'];
+
+echo json_encode($_POST);
+if(isset($_POST["room_id"])){
+	$order->room_id = explode(" ", $_POST["room_id"])[1];
+}
+else if(isset($_SESSION["room_id"])){
+	$order->room_id = $_SESSION["room_id"] ;
+}
+
+if($order->insertOrder()){
+	header("location:../order_done.php");
+	exit;
+}
+ //$products = $_POST["products[]"];
+ //$prices = $_POST["prices[]"];

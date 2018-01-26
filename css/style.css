@@ -33,8 +33,11 @@
 	    /* border-style: dashed; */
 	    border-color: black;
 	    float: left;
-	    margin-top: -221px;
+	    /*margin-top: -270px;*/
 	    padding: 15px;
+	    margin-left: 70px;
+	    position: absolute;
+	    overflow: overlay;
 	}
 	article{
 		background-color: #33aaff;
@@ -79,4 +82,40 @@
 		width: 9%;
 		padding-left: 10%;
 
+	}
+	.plusBtn{
+		background-image: url(../imgs/plus.png);
+	   	width: 28px;
+	    height: 26px;
+	    background-size: 28px;
+	    background-color: white;
+	    border-radius: 7px;
+	    background-position: center;
+	    margin-top: 1px;
+	    position: absolute;
+	}
+	.minusBtn{
+		background-image: url(../imgs/minus.ico);
+	    width: 22px;
+	    height: 10px;
+	    background-size: 22px;
+	    background-color: black;
+	    border-radius: 10px;
+	    background-position: center;
+	    /* margin-top: 28px; */
+	    position: relative;
+	    margin-left: 2px;
+	    top: 16px;
+	}
+
+	.delBtn{
+		background-image: url(../imgs/del.png);
+	   	width: 28px;
+	    height: 26px;
+	    background-size: 28px;
+	    background-color: white;
+	    border-radius: 7px;
+	    background-position: center;
+	    margin-top: 1px;
+	    position: absolute;
 	}

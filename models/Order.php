@@ -11,6 +11,7 @@ class Order extends Model{
 	public $price;
 	public $status;
 	public $notes;
+	public $room_id;
 	
 	function __construct()
 	{
@@ -36,6 +37,7 @@ class Order extends Model{
 		else{
 			echo "connection error";
 		}
+		return true;
 	}
 
 	public function selectOrders()
@@ -51,11 +53,42 @@ class Order extends Model{
 				echo $result;
 			}
 			else{
-				return "success";
+				return $result;
 			}
 		}
 		else{
 			echo "connection error";
 		}
+	}
+
+
+	//to be removed later 
+	public function selectProducts()
+	{
+		$query = sprintf("select * from products");
+
+		if(! $result_set = $this->prepareStmt($query)){
+			echo $this->conn->connect_error;
+			return false;
+		}
+		//$stmt->close();
+		return $this->getData($result_set);
+
+	}
+	public function selectRooms()
+	{
+		
+		$query = sprintf("select * from rooms");
+
+		if(! $result_set = $this->prepareStmt($query)){
+			echo $this->conn->connect_error;
+					echo " msh tmam";
+
+			return false;
+		}
+		//$stmt->close();
+		echo "tmam";
+		return $this->getData($result_set);
+
 	}
 }
