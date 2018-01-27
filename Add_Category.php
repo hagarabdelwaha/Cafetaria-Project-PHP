@@ -6,11 +6,11 @@
 <body>
 <form action="chk_category.php" method="post">
 <nav>
-  <a href="">Home</a>|
+	<a href="models/AdminHomeAll.php">Home</a>|
   <a href="All_Products.php">Products</a>|
   <a href="All_Users.php">Users</a>|
-  <a href="">Manual Order</a>|
-  <a href="">Checks</a>|
+  <a href="order_done.php">Manual Order</a>|
+  <a href="models/Checks.php">Checks</a>|
 </nav>
 
 <h1> Add Category </h1>

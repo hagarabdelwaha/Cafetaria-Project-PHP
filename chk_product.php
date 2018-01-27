@@ -1,10 +1,7 @@
 <?php
 
 session_start();
-//chk_product.php
-//chech product data before inserting in database
 
-//require_once('models/product_class.php');
 require_once('models/product_class.php');
 
 

@@ -40,6 +40,14 @@ if(!empty($_GET['id']))
                                {
                                 $_SESSION['extranum']=$value;
                                }
+                               else if($key=="extra_room")
+                                {
+                                 $_SESSION['extranum']=$value;
+                                }
+                                else if($key=="image_path")
+                                 {
+                                  $_SESSION['img']=$value;
+                                 }
 
 
 
@@ -169,7 +177,9 @@ if(!empty($_GET['id']))
   </td>
  </tr>
 
-
+<tr>
+<td> <img src="<?php echo   $_SESSION['img']; ?>" width="150" height="150" /></td>
+</tr>
 
 
  <tr>

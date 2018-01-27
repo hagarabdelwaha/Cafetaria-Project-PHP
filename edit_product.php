@@ -1,7 +1,5 @@
 <?php
 session_start();
-//require_once('models/product_class.php');
-//require_once('models/category_class.php');
 require_once('models/product_class.php');
 require_once('models/category_class.php');
 
@@ -45,13 +43,11 @@ if(!empty($_GET['id']))
                               else if($key=="category_id")
                                {
                                 $_SESSION['procat']=$value;
-                               }/*
-                               else if($key=="imagepath")
+                               }
+                               else if($key=="imagePath")
                                {
                                 $_SESSION['imgpath']=$value;
-                               }*/
-
-
+                               }
 
 
                       }
@@ -136,8 +132,6 @@ if(!empty($_GET['id']))
 
 
              ?>
-
-
  		</select>
  	</td>
 
@@ -147,8 +141,13 @@ if(!empty($_GET['id']))
  	<td><input type="number" name="product_quantity" min="0"  required  value="<?php echo $_SESSION['proquantity'];?>" /></td>
  </tr>
   <tr>
-
+<td colspan="2">  <img src="<?php echo $_SESSION['imgpath'];?>" width="100" height="100"/> </td>
  </tr>
+ <!-- <tr>
+  <td><label>Product Picture</label></td>
+  <td><input type="file" name="img"  accept='image/jpeg,image/jpg,image/png' ></td>
+</tr> -->
+
  <tr>
  	<td><input type="submit" name="btn_Save" value="Edit"></td>
  	<td><input type="reset" name="btn_rest"></td>
