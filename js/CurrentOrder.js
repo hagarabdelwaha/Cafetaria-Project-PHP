@@ -118,7 +118,7 @@ function update_html( orderDate,name,Room,extRoom,drinks,drinksCount,total,produ
 	 table.appendChild(r4)
 	 table.appendChild(r5)
 	 table.appendChild(r6);
+//	 console.log(table)
 	 container.appendChild(table);
 
 }
-console.log("here");

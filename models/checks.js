@@ -90,7 +90,7 @@ function creatdrink(drinkname){
 	 td.setAttribute('class','drinksRaw')
 	var img=document.createElement('img');
 	img.setAttribute('class','drink')
-	img.src=drinkname+'.png'
+	img.src='../imgs/'+drinkname+'.png'
 	td.appendChild(img)
 	 return td;
 }
@@ -178,7 +178,7 @@ function creatNameShow(name,fnName){
 	var td=document.createElement('td');
 	var thtext=document.createTextNode(name);
 	var img=document.createElement('img');
-	img.src='show.png'
+	img.src='../imgs/show.png';
 	img.addEventListener('click',fnName);
 	td.appendChild(img)
 	td.appendChild(thtext);
