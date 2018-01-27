@@ -8,7 +8,18 @@ session_start();
 // include("../models/orders.php");
 $order = new Order();
 echo json_encode($_POST);
-if (!isset($_POST) || empty($_POST)) {
+
+if(isset($_POST["search_submit"]) && !empty($_POST["search_submit"])){
+	$_SESSION["user_id"] =1;
+	$_SESSION["products"] =( $order->selectSearchProducts($_POST["search_key"]));
+	$_SESSION["rooms"] =( $order->selectRooms());
+	$_SESSION["latest_orders"] = $order->selectLastOrderProducts();
+
+	//echo json_encode($_SESSION["latest_orders"] );
+	  header("location:../user.order.php");
+	  exit;
+}
+else if (!isset($_POST) || empty($_POST)) {
 	//to be removed later
 	$_SESSION["user_id"] =1;
 	$_SESSION["products"] =( $order->selectProducts());

@@ -88,6 +88,8 @@ for (var i = figures.length - 1; i >= 0; i--) {
 		delBtn.addEventListener("click",function (e) {
 			e.preventDefault();
 			parentDiv.removeChild(this.parentNode);
+			total.textContent = Number(total.textContent)-(Number(price)*Number(input.value));
+			totalInput.value = total.textContent;
 			
 		});
 
