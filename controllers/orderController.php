@@ -1,13 +1,24 @@
 <?php
 
+include_once "../models/user.php";
 function __autoload($name){
 	include_once "../models/".$name.".php";
 }
+
 session_start();
 
 // include("../models/orders.php");
 $order = new Order();
 echo json_encode($_POST);
+
+
+
+$user = new User();
+if(/*$user->isAdmin()*/ 1 ){
+	echo json_encode($user->getAllUsers());
+	$_SESSION['all_users'] = $user->getAllUsers();
+	//exit;
+}
 
 if(isset($_POST["search_submit"]) && !empty($_POST["search_submit"])){
 	$_SESSION["user_id"] =1;
@@ -31,6 +42,13 @@ else if (!isset($_POST) || empty($_POST)) {
 	  exit;
 }
 
+if( /*$user->isAdmin()*/ 1){
+	$order->user_id = $_POST["user_id"];
+}else if (isset($_SESSION["user_id"])) {
+	$order->user_id = 1;//$_SESSION["user_id"];
+
+}
+
 
 
 
@@ -45,7 +63,6 @@ else if (!isset($_POST) || empty($_POST)) {
 
 //remove this comment when session id is ready
 $order->id = NULL;
-$order->user_id = 1;//$SESSION["id"];
 
 // //get current date
 $order->date = date("Y-m-d");

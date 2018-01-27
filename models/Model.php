@@ -6,7 +6,7 @@ class Model{
 
 	public function __construct(){
 		////CHANGE THIS CREDINTIALS TO YOURS YA MENNA , HAGER AND ALAA
-		$this->conn = new \mysqli("localhost","menna","54321again","Cafeteria");
+		$this->conn = new \mysqli("localhost","rania","rania2017","Cafeteria");
 		if (! $this->conn ) {
 			echo "connection error";
 		}
@@ -129,8 +129,7 @@ class Model{
 		//change this query after
 		$query = sprintf("select %s from %s",implode(',',$keys),$this->getTableName());
 		// $query = sprintf("select * from products");
-		echo "query : ".$query."<br>";
-
+		
 		if(! $result_set = $this->prepareStmt($query)){
 			echo $this->conn->connect_error;
 					echo " msh tmam";
