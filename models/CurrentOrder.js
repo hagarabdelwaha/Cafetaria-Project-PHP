@@ -29,7 +29,7 @@ function creatdrink(drinkname){
 	 td.setAttribute('class','drinksRaw')
 	var img=document.createElement('img');
 	img.setAttribute('class','drink')
-	img.src=drinkname+'.png'
+	img.src="../imgs/"+drinkname+'.png'
 	td.appendChild(img)
 	 return td;
 }
