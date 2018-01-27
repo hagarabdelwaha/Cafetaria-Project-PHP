@@ -6,7 +6,7 @@ class Model{
 
 	public function __construct(){
 		////CHANGE THIS CREDINTIALS TO YOURS YA MENNA , HAGER AND ALAA
-		$this->conn = new \mysqli("localhost","rania","rania2017","Cafeteria");
+		$this->conn = new \mysqli("localhost","menna","54321again","Cafeteria");
 		if (! $this->conn ) {
 			echo "connection error";
 		}
@@ -49,7 +49,7 @@ class Model{
 			$result = $stmt->get_result();
 
 			$stmt->close();
-			return  $result;  
+			return  $result;
 	}
 
 	public function getData($result_set)
@@ -75,13 +75,13 @@ class Model{
 		$data = array();
 		$i=0;
 		while ($row = $result_set->fetch_array(MYSQLI_NUM))
-        {        
+        {
             $data[]=$row[0];
         }
         return $data;
 	}
 
-	
+
 	/**
 	*	dynamic insert can be used by any table
 	*	@param $variableList is a variable list of any size ex(x1,x2,x3,...)
@@ -89,7 +89,7 @@ class Model{
 	public function insert($variableList){
 		$keys = array();
 		$values = array();
-		
+
 		//to remove last element as it's info about obj
 		array_pop($variableList);
 
@@ -118,7 +118,7 @@ class Model{
 	public function select($variableList)
 	{
 		$keys = array();
-		
+
 		//to remove last element as it's info about obj
 		array_pop($variableList);
 
@@ -146,6 +146,6 @@ class Model{
 	* close the connection
 	**/
 	public function __destruct(){
-		$this->conn->close();  
+		$this->conn->close();
 	}
 }
