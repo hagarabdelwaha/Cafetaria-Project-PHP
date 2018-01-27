@@ -8,7 +8,7 @@ $product=new Product();
 $pros=$product->getAllProducts();
 
 
-              echo "<table border=1>";
+              echo '<table border=1 class="t01">';
               echo "<tr>
 
                 <td>Product</td>
