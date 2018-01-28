@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 
+<?php
+
+ 	include '../getMyOrder.php';
+
+?>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8">
 		<title>My Orders</title>
@@ -8,7 +14,6 @@
 
   </head>
   <body>
-<form  action="../getMyOrder.php" method="post"  name="myForm" >
 <div class="container">
     <div class="tab">
         <button class="tablinks" >Home</button>
@@ -21,13 +26,13 @@
       <div>
         <p> My Order </p>
       </div>
-        <div>
-          <label for="meeting" >Start Date : </label>
-          <input id="startDate" name="startDate" type="date" />
+			<div>
+				<label for="meeting" >Start Date : </label>
+				<input id="startDate" name="startDate" type="date" />
 
-          <label  for="meeting">End Date : </label>
-          <input id="EndDate" name="endDate" type="date"/>
-      </div>
+				<label  for="meeting">End Date : </label>
+				<input id="EndDate" name="endDate" type="date"/>
+		</div>
 
         <div>
 
@@ -37,26 +42,11 @@
       </div>
 
     </div>
-</form>
+							<script type="text/javascript">
+						      var x = <?php print_r($order); ?>
+									
+							</script>
 
-<script src="../js/myOrder.js"></script>
-							 <script>
-                 userOrders = '<?php if(!empty($_REQUEST['usersData']) ){
-		                echo trim($_REQUEST['usersData']);
-									}else echo "null";?>';
-
-									productInfo = '<?php if(!empty($_REQUEST['productInfo']) ){
-										 echo trim($_REQUEST['productInfo']);
-									 }else echo "null";?>';
-
-                  if(userOrders!='null')
-                  {
-										 console.log("herr",userOrders.split('$').length);
-										console.log(userOrders.split('$'))
-										update_order(userOrders.split('$').length,userOrders.split('$'),productInfo.split('$'))
-									}
-
-							 </script>
   </body>
 
 
