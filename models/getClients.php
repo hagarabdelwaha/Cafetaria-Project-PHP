@@ -122,7 +122,6 @@ class Admin{
           for ($i=0;$i<count($ordersId);$i++)
           {
              // echo "here.$ordersId[$i]";
-
                 $sql ="select users.name,date,order_products.quantity,products.name
                 from orders,users,products,order_products where date between ? and ?
                 and orders.user_id=users.id and products.id=order_products.product_id and

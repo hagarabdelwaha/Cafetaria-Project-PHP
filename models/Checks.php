@@ -9,10 +9,10 @@
 
   </head>
   <body>
-<form  action="getChecks.php" method="post"  name="myForm" >
+
 <div class="container">
     <div class="tab">
-        <button class="tablinks" >Home</button>
+        <button class="tablinks" onClick="document.location.href='AdminHomeAll.php'">Home</button>
         <button class="tablinks" >Produts</button>
         <button class="tablinks">Users</button>
         <button class="tablinks">Manual</button>
@@ -22,6 +22,7 @@
     </div>
 
       <div>
+<form  action="getChecks.php" method="post"  name="myForm" >
         <p> Checks </p>
       </div>
         <div>
