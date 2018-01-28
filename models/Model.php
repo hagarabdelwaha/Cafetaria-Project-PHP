@@ -129,7 +129,6 @@ class Model{
 		//change this query after
 		$query = sprintf("select %s from %s",implode(',',$keys),$this->getTableName());
 		// $query = sprintf("select * from products");
-		echo "query : ".$query."<br>";
 
 		if(! $result_set = $this->prepareStmt($query)){
 			echo $this->conn->connect_error;

@@ -1,0 +1,87 @@
+
+body{
+  width:70%;
+  height:100%;
+  margin-left: 200px;
+  border-width: thick;
+  border-color: black;
+  border: 2px solid #ccc;
+}
+
+.container{
+  width:70%;
+  height:100%;
+  border: 2px solid #ccc;
+
+}
+.tab {
+overflow: hidden;
+border: 1px solid #ccc;
+background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab a {
+background-color: inherit;
+float: left;
+padding: 14px 16px;
+transition: 0.3s;
+font-size: 17px;
+color: black;
+}
+
+/* Change background color of buttons on hover */
+a:hover {
+background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+background-color: #ccc;
+}
+
+
+
+div{
+  padding: 20px;
+}
+
+
+table {
+    width:90%;
+    padding: 10px;
+    border-style: none;
+
+}
+/*table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding-top: 10px;
+
+}*/
+
+th, td {
+    padding: 5px;
+    text-align: left;
+
+}
+
+th{
+  background-color: black;
+}
+table.t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table.t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table.t01 th {
+    background-color: black;
+    color: white;
+}
+
+table.t01{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding-top: 10px;
+}

@@ -4,7 +4,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Admin Home</title>
-    <link rel="stylesheet" type="text/css" href="Checks.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/Checks.css">
   </head>
   <body>
 <div class="container">
@@ -14,7 +15,8 @@
         <button class="tablinks">Users</button>
         <button class="tablinks">Manual</button>
         <button class="tablinks">Checks</button>
-        <img id="userImg" src="user.png"/>
+
+        <img id="userImg" src="../imgs/user.png"/>
         <label name="UserName">user name Islam</label>
     </div>
 
@@ -28,6 +30,7 @@
 
 
    	<script src="CurrentOrder.js"></script>
+
 		<script>
 
 			var orders_Array=<?php echo json_encode($users_orders);?>;
@@ -41,6 +44,7 @@
 		  }
      console.log(order_date);
 		</script>
+
 		<div hidden>
 				<form id="form" action="Admin.php" method='post'>
 						<input id="done_order" name="done_order">

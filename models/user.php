@@ -55,6 +55,7 @@ class User extends Model
       header('Location: ' ."../login.php?");
   }
   }
+<<<<<<< HEAD
 
 
 public function selectLastId()
@@ -80,6 +81,17 @@ public function selectLastName()
   //$stmt->close();
   echo $this->getData($result_set)[0][0];
   return $this->getData($result_set)[0][0];
+=======
+  public function getAllUsers()
+  {
+    if(!$users = $this->select(["id"=>"id","name"=>"name",0]) ) {
+        return false;
+      }
+      else{
+        return $users;
+      }
+  }
+>>>>>>> 35ab2d88c9d18229f018ade97d455c8ce3edc9bf
 }
 
 public function isAdmin()

@@ -125,3 +125,11 @@
 	.latest_order_header{
 		margin-left: 105px;
 	}
+	.search_form{
+		float: right;
+    	margin-right: -37.5%;
+    	height: 50%;
+	}
+	.user_id{
+		margin-bottom: 25px;
+	}
