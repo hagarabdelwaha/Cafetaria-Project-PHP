@@ -124,7 +124,7 @@ $cats_arr=$cats->get_Categories();
  </tr>
  <tr>
  	<td><input type="submit" name="btn_Save"></td>
- 	<td><input type="reset" name="btn_rest"></td>
+ 	<td><input type="reset" name="btn_rest" value="Reset"></td>
  </tr>
  <tr>
  	<td colspan="2"> <center><label name="lblerror" style="color: red"> <?php

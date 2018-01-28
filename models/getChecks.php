@@ -23,15 +23,25 @@ $usersName=array();
 $admin=new Admin();
 $admin->openDBconn();
 $usersOrderTotal=$admin->selectUsersOrdersTotal($start_date,$end_date);
-$allUsersData=$admin->getforAllusers($start_date,$end_date,$admin->matched_user,$usersOrderTotal);
+$SearchUser=$admin->matched_user;
+// if($user_name){
+//   echo"usename";
+//   array_push($SearchUser,$user_name);
+//   // $SearchUser$user_name];
+//  }
+ //echo "<br>kkkk : ".implode(",",$SearchUser);
+
+$allUsersData=$admin->getforAllusers($start_date,$end_date,$SearchUser,$usersOrderTotal);
 
 $Users_orderTotal= $allUsersData;
+echo implode(" , ",$Users_orderTotal);
 //$products_price=array("tea,10","coffe,20","juice,15");
+$drinks=$admin->getAllProductInfo();
+$usersName=$admin->getCafeUsers();
 $products_price=$drinks;
 $arrLen=sizeof($Users_orderTotal);
 
-$drinks=$admin->getAllProductInfo();
-$usersName=$admin->getCafeUsers();
+
 
 $admin->closeDBconn();
 $arrLen=sizeof($usersName);

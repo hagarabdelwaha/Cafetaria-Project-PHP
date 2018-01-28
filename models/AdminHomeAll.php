@@ -10,11 +10,11 @@
   <body>
 <div class="container">
     <div class="tab">
-        <button class="tablinks" >Home</button>
+        <button class="tablinks">Home</button>
         <button class="tablinks" >Produts</button>
         <button class="tablinks">Users</button>
         <button class="tablinks">Manual</button>
-        <button class="tablinks">Checks</button>
+        <button class="tablinks" onClick="document.location.href='Checks.php'" >Checks</button>
 
         <img id="userImg" src="../imgs/user.png"/>
         <label name="UserName">user name Islam</label>
