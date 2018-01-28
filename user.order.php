@@ -10,8 +10,16 @@
 		<li><a>Home</a></li> 
 		<li><a>My Orders</a></li>
 	</ul>
-	<div id="right-header"><img  src="imgs/person.png"><h3 id="username">User Name</h3></div>
+	<div id="right-header"><img  src="imgs/person.png"><h3 id="username">User Name</h3>
+	</div>
+
 </header>
+<section class="search_form">
+<form method="post" action="controllers/orderController.php">
+		<input type="text" name="search_key">
+		<input type="submit" name="search_submit">
+	</form>
+</section>
 
 <section>
 	<div id="container">

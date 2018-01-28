@@ -128,6 +128,21 @@ class Order extends Model{
 		return $this->getData($result_set);
 
 	}
+
+	public function selectSearchProducts($product_name)
+	{
+		$query = "select * from products where name Like '%".$product_name."%'";
+		//echo $query;
+		
+
+		if(! $result_set = $this->prepareStmt($query)){
+			echo $this->conn->connect_error;
+			return false;
+		}
+		//$stmt->close();
+		return $this->getData($result_set);
+
+	}
 	public function selectRooms()
 	{
 		

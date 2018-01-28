@@ -55,5 +55,14 @@ class User extends Model
       header('Location: ' ."../login.php?");
   }
   }
+  public function getAllUsers()
+  {
+    if(!$users = $this->select(["id"=>"id","name"=>"name",0]) ) {
+        return false;
+      }
+      else{
+        return $users;
+      }
+  }
 }
 ?>
