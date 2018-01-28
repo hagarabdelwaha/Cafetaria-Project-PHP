@@ -154,7 +154,7 @@ class Admin{
                  // echo "name   : "."$MatcusersName[$i]"."<br>";
                  $usersOrderTotal[$i].=":".$this->selectUserOrderDate($startDate,$endDate,$MatcusersName[$i]);
                  $usersOrderTotal[$i].=":".$this->selectUserOrderDrinks($startDate,$endDate,$MatcusersName[$i]);
-                  // echo $usersOrderTotal[$i]."<br>";
+                  echo $usersOrderTotal[$i]."<br>";
                }
                return $usersOrderTotal;
             }

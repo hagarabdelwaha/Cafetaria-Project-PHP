@@ -15,16 +15,6 @@ mysqli_select_db($conn,"Cafeteria");
 if($conn->connect_errno) {
 trigger_error($conn->connect_error);
 }
-
-
-
-
-
-/*function selectUsersOrdersTotal(){
-  return $order;
-}*/
-
-  //get first table in myOrder
     $order=array();
     $sql = "SELECT orders.date ,status,price from orders WHERE orders.date >='2018-03-03' AND orders.date <= '2018-12-12'";
     $stmt = $conn->stmt_init();
@@ -37,40 +27,26 @@ trigger_error($conn->connect_error);
       $stmt->close();
     }
 
-    //print_r($order);
-    $_SESSION['first_table']=$order;
-    // print_r($_SESSION['first_table']);
-    // exit;
-
-  /*private $conn;
-  public $matched_user=array();
-  public function openDBconn(){
-      $this->conn= new mysqli("localhost","menna","54321again");
-      class Admin{
-      mysqli_select_db($this->conn, "Cafeteria");
-
-      if ($this->conn->connect_errno) {
-      trigger_error($db->connect_error);
-      }
-
-  }
-  public function getAllProductInfo(){
-    $order=array();
-    $sql = "SELECT orders.date ,status,price from orders";
-    $stmt = $this->conn->stmt_init();
+    //get second table my order
+    $product=array();
+    $sql = "SELECT name,price,imagePath from products WHERE id=63 ";
+    $stmt = $conn->stmt_init();
     if ($stmt->prepare($sql)) {
-      $stmt->bind_result($date,$status,$price);
+      $stmt->bind_result($name,$price,$imagePath);
       $result = $stmt->execute();
      while($fetch = $stmt->fetch()) {
-           array_push($order,"$date".","."$status".","."$price");
+           array_push($product,"$name".","."$price".","."$imagePath");
         }
       $stmt->close();
-        }
-        return $order;
     }
 
-}*/
-// header("location: models/myOrder.php");
-  ?>
+
+
+    $_SESSION['first_table']=$order;
+    $_SESSION['second_table']=$product;
+
+?>
+
+
 </body>
 </html>

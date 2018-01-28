@@ -11,14 +11,13 @@ var datesel="";
 var ordereditemArr=[];
 var items_numArr=[];
 
-
 function creatdrink(drinkname){
 
 	var td=document.createElement('td');
 	 td.setAttribute('class','drinksRaw')
 	var img=document.createElement('img');
 	img.setAttribute('class','drink')
-	img.src='imgs/'+drinkname+'.png'
+	img.src='../imgs/'+drinkname+'.png'
 	td.appendChild(img)
 	 return td;
 }
@@ -26,17 +25,14 @@ function creatdrink(drinkname){
 function getProductprice(drinkname)
 {
 	var len=productsInfo_arr.length;
-	//console.log(len,productsInfo_arr);
-
-  for(var i=0;i<len;i++)
+	for(var i=0;i<len;i++)
 	 {
      prod_info=productsInfo_arr[i].split(",");
-		 if(drinkname == prod_info[0])
-		 {
-			 return prod_info[1];
-		 }
+		 if(drinkname==prod_info[0])
+		   return prod_info[1];
    }
 }
+
 
 function creatdrinkName(drinkname,price){
 	var td=document.createElement('td');

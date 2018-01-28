@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 
-<?php
-
- 	include '../getMyOrder.php';
-
-?>
+<?php include '../getMyOrder.php';?>
 <html lang="en">
 
 	<head>
@@ -24,7 +20,10 @@
     </div>
 
       <div>
+		<form action="../getMyOrder.php" method="post" name="myform">
+
         <p> My Order </p>
+
       </div>
 			<div>
 				<label for="meeting" >Start Date : </label>
@@ -42,12 +41,10 @@
       </div>
 
     </div>
-							<script type="text/javascript">
-						      var x = <?php print_r($order); ?>
-									
-							</script>
+	</form>
+
+		<script src="../js/myOrder.js"></script>
 
   </body>
-
 
 </html>
