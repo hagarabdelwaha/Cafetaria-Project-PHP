@@ -10,7 +10,7 @@ class User
  public $room_num;
  public $extra_room;
  public $imagepath;
-
+ public $deleted;
  //****************
  public $dbname;
  public $host;
@@ -58,7 +58,7 @@ class User
 public function getAllUsers()
 {
 
-   $query="select id,name,room_number, image_path ,extra_room from  users ";
+   $query="select name,id,room_number, image_path ,extra_room from  users ";
    $users=$this->db_connection->prepare($query);
     $users->execute();
   return $users;
@@ -67,29 +67,42 @@ public function getAllUsers()
 }
 
 
-public function delete_order()
-{
-
-     $query="delete  from orders where user_id= ?";
-     $param=[$this->id];
-     $usr=$this->db_connection->prepare($query);
-      $usr->execute($param);
-      return $usr->rowcount();
-
-}
+// public function delete_order()
+// {
+//
+//      $query="delete  from orders where user_id= ?";
+//      $param=[$this->id];
+//      $usr=$this->db_connection->prepare($query);
+//       $usr->execute($param);
+//       return $usr->rowcount();
+//
+// }
 
 
 public function delete_user()
 {
-    $this->delete_order();
-     $query="delete  from users where id= ?";
-     $param=[$this->id];
+  //  $this->delete_order();
+
+     $query="update  users set  name=?  where id= ?";
+     $param=[$this->name,$this->id];
      $usr=$this->db_connection->prepare($query);
       $usr->execute($param);
       return $usr->rowcount();
 
 }
 
+
+// public function get_user_name()
+// {
+//
+//    $query="select name from  users where id = ? ";
+//     $param=[$this->id];
+//     $select_product=$this->db_connection->prepare($query);
+//     $select_product->execute($param);
+//   return $select_product;
+//
+//
+// }
 
 
 public function get_user()

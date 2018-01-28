@@ -24,49 +24,57 @@ $pros=$product->getAllProducts();
 		     {
 
                //show products data
-		     	echo "<tr>";
-               foreach ($row as $key => $value)
-                        {
+               if($row['quantity']==-1)
+               {
+
+               }else
+               {
+
+                 echo "<tr>";
+                      foreach ($row as $key => $value)
+                               {
 
 
+                                    if($key=="id")
+                                    {
+                                      $rowid=$value;
+                                    }else if($key=="quantity")
+                                    {
+                                      if($value >0)
+                                      {
+                                        $availability="available";
+                                      }else
+                                      {
+                                        $availability="unavailable";
+                                      }
 
-                            	if($key=="id")
-                            	{
-                            		$rowid=$value;
-                            	}else if($key=="quantity")
-                            	{
-                            		if($value >0)
-                            		{
-                            			$availability="available";
-                            		}else
-                            		{
-                            			$availability="unavailable";
-                            		}
+                                    }else if($key=="imagepath") //imagePath
+                                       {
+                                             // /var/www/html/project_file/products_imgs
 
-                            	}else if($key=="imagepath") //imagePath
-                                {
-                                      // /var/www/html/project_file/products_imgs
+                                           echo ' <td> <img src="'.$value.'" width="100" height="100"/> </td> ';
 
-                                    echo ' <td> <img src="'.$value.'" width="100" height="100"/> </td> ';
+                                       }
+                                    else
+                                    {
 
-                                }
-                            	else
-                            	{
+                                      echo "<td>$value</td>";
 
-                            		echo "<td>$value</td>";
+                                    }
+                            }
 
-                            	}
-
-			             }
-
-				echo "<td>".$availability."
-				  <a href= edit_product.php?id=$rowid> Edit </a>
-				  <a href= delete_product.php?id=$rowid> Delete </a>
-				  </td>
-				  ";
+                            echo "<td>".$availability."
+                              <a href= edit_product.php?id=$rowid> Edit </a>
+                              <a href= delete_product.php?id=$rowid> Delete </a>
+                              </td>
+                              ";
 
 
-                echo "</tr>";
+                                    echo "</tr>";
+
+		             }
+
+
 		        }
 
 		         echo "</table>";

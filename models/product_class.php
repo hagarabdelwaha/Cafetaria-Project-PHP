@@ -101,7 +101,7 @@ public function __construct()
 public function getAllProducts()
 {
 
-   $query="select id,name,price,quantity,imagepath from  products ";
+   $query="select name,id,price,quantity,imagepath from  products ";
 
    $select_products=$this->db_connection->prepare($query);
 
@@ -113,32 +113,39 @@ public function getAllProducts()
 }
 
 
-
-public function delete_order()
-{
-
-     $query="delete  from orders where user_id= ?";
-     $param=[$this->id];
-     $usr=$this->db_connection->prepare($query);
-      $usr->execute($param);
-      return $usr->rowcount();
-
-}
+//
+// public function delete_order()
+// {
+//
+//      $query="delete  from orders where user_id= ?";
+//      $param=[$this->id];
+//      $usr=$this->db_connection->prepare($query);
+//       $usr->execute($param);
+//       return $usr->rowcount();
+//
+// }
 
 
 public function delete_product()
 {
-  $this->delete_order();
 
-   $query="delete  from products where id= ?";
+       $query="update  products set  quantity=?  where id= ?";
+       $param=[$this->quantity,$this->id];
+       $usr=$this->db_connection->prepare($query);
+        $usr->execute($param);
+        return $usr->rowcount();
 
-   $param=[$this->id];
-
-   $product_name=$this->db_connection->prepare($query);
-
-    $product_name->execute($param);
-
-    return $product_name->rowcount();
+  //$this->delete_order();
+   //
+   // $query="delete  from products where id= ?";
+   //
+   // $param=[$this->id];
+   //
+   // $product_name=$this->db_connection->prepare($query);
+   //
+   //  $product_name->execute($param);
+   //
+   //  return $product_name->rowcount();
 
 }
 
