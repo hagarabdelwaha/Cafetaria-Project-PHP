@@ -36,13 +36,16 @@
 			var orders_Array=<?php echo json_encode($users_orders);?>;
 			var arr_length=<?php echo $arrLen;?>;
 			var productsInfo_arr=<?php echo json_encode($products_price); ?>;
-			console.log(arr_length,orders_Array);
+			// console.log(arr_length,"here",orders_Array);
 
        for(var num=0;num<arr_length;num++){
 			    var order = orders_Array[num].split(":");
-		        update_html(order[0],order[1],order[2],order[3],order[4].split(','),order[5].split(','),order[6],productsInfo_arr);
+					  // console.log(order)
+					  // console.log(order[0],order[1],order[2],order[3],order[4].split(','),order[5].split(','),order[6],productsInfo_arr)
+
+					 update_html(order[1],order[0],order[3],order[3],order[4].split(','),order[5].split(','),order[2],productsInfo_arr);
 		  }
-     console.log(order_date);
+     // console.log(order_date);
 		</script>
 
 		<div hidden>
