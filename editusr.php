@@ -57,11 +57,12 @@ $eusr->id=$_SESSION['userid'];
 echo $eusr->name.$eusr->room_num.$eusr->extra_room.$eusr->id;
 
  $t=$eusr->Edit_User();
-//
-//  if($t>0)
+header("location:All_Users.php");
+
+//  if($t > 0)
 //  {
 //
-//  unset($_SESSION['usrname']);
+//   unset($_SESSION['usrname']);
 //   unset($_SESSION['room_number']);
 //   unset($_SESSION['extra_room']);
 //   unset($_SESSION['userid']);
@@ -72,7 +73,7 @@ echo $eusr->name.$eusr->room_num.$eusr->extra_room.$eusr->id;
 //  {
 //  	echo "not edited";
 //  }
-//
+
 
 
 

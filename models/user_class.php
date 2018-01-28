@@ -43,12 +43,12 @@ class User
  {
 
    //echo "try".$this->name.$this->room_num.$this->extra_room.$this->id;
-     $query="update users set  name='$this->name' where id='$this->id'";
-    echo $query ;
+     $query="update users set  name=?,room_number=?,extra_room=? where id=?";
+  //  echo $query ;
      $edit_statm=$this->db_connection->prepare($query);
-      //$edit_parameters=[$this->name,$this->room_num,$this->extra_room,$this->id];
-  //  //echo $this->name.$this->room_num.$this->extra_room.$this->id;
-      $edit_statm->execute();
+      $edit_parameters=[$this->name,$this->room_num,$this->extra_room,$this->id];
+    //echo $this->name.$this->room_num.$this->extra_room.$this->id;
+      $edit_statm->execute($edit_parameters);
    return $edit_statm->rowcount();
 
  }
@@ -70,7 +70,7 @@ public function getAllUsers()
 public function delete_order()
 {
 
-     $query="delete  from orders where id= ?";
+     $query="delete  from orders where user_id= ?";
      $param=[$this->id];
      $usr=$this->db_connection->prepare($query);
       $usr->execute($param);
