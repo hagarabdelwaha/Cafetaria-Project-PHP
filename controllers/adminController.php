@@ -1,4 +1,4 @@
-<?php include("../models/admin.php");
+<?php include_once("../models/admin.php");
 
 $admin= new Admin();
 $admin->addUser();
