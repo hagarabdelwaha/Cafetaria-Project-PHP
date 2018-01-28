@@ -1,7 +1,5 @@
 <?php
 session_start();
-//require_once('models/product_class.php');
-//require_once('models/category_class.php');
 require_once('models/product_class.php');
 require_once('models/category_class.php');
 
@@ -45,13 +43,11 @@ if(!empty($_GET['id']))
                               else if($key=="category_id")
                                {
                                 $_SESSION['procat']=$value;
-                               }/*
-                               else if($key=="imagepath")
+                               }
+                               else if($key=="imagePath")
                                {
                                 $_SESSION['imgpath']=$value;
-                               }*/
-
-
+                               }
 
 
                       }
@@ -70,10 +66,23 @@ if(!empty($_GET['id']))
 <html>
 <head>
 	<title>Edit Product</title>
+  <link rel="stylesheet" type="text/css" href="css/pro.css">
 </head>
 <body>
 
 <form action="edit.php" method="post"  >
+
+  <div class="tab">
+  	<a href="models/AdminHomeAll.php">Home</a>
+  	<a href="All_Products.php">Products</a>
+  	<a href="All_Users.php">Users</a>
+  	<a href="order_done.php">Manual Order</a>
+  	<a href="models/Checks.php">Checks</a>
+
+  	<img id="userImg" src="imgs/user.png" width="40" height="40"/>
+  	<label name="UserName">user name Islam</label>
+  </div>
+
 
 <table>
  <tr>
@@ -136,8 +145,6 @@ if(!empty($_GET['id']))
 
 
              ?>
-
-
  		</select>
  	</td>
 
@@ -147,8 +154,13 @@ if(!empty($_GET['id']))
  	<td><input type="number" name="product_quantity" min="0"  required  value="<?php echo $_SESSION['proquantity'];?>" /></td>
  </tr>
   <tr>
-
+<td colspan="2">  <img src="<?php echo $_SESSION['imgpath'];?>" width="100" height="100"/> </td>
  </tr>
+ <!-- <tr>
+  <td><label>Product Picture</label></td>
+  <td><input type="file" name="img"  accept='image/jpeg,image/jpg,image/png' ></td>
+</tr> -->
+
  <tr>
  	<td><input type="submit" name="btn_Save" value="Edit"></td>
  	<td><input type="reset" name="btn_rest"></td>

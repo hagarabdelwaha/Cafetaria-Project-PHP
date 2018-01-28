@@ -40,6 +40,14 @@ if(!empty($_GET['id']))
                                {
                                 $_SESSION['extranum']=$value;
                                }
+                               else if($key=="extra_room")
+                                {
+                                 $_SESSION['extranum']=$value;
+                                }
+                                else if($key=="image_path")
+                                 {
+                                  $_SESSION['img']=$value;
+                                 }
 
 
 
@@ -60,10 +68,22 @@ if(!empty($_GET['id']))
 <html>
 <head>
 	<title>Edit User</title>
+  <link rel="stylesheet" type="text/css" href="css/pro.css">
 </head>
 <body>
 
 <form action="editusr.php" method="post"  >
+
+  <div class="tab">
+  	<a href="models/AdminHomeAll.php">Home</a>
+  	<a href="All_Products.php">Products</a>
+  	<a href="All_Users.php">Users</a>
+  	<a href="order_done.php">Manual Order</a>
+  	<a href="models/Checks.php">Checks</a>
+
+  	<img id="userImg" src="imgs/user.png" width="40" height="40"/>
+  	<label name="UserName">user name Islam</label>
+  </div>
 
 <table>
  <tr>
@@ -169,7 +189,9 @@ if(!empty($_GET['id']))
   </td>
  </tr>
 
-
+<tr>
+<td> <img src="<?php echo   $_SESSION['img']; ?>" width="150" height="150" /></td>
+</tr>
 
 
  <tr>

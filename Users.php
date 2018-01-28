@@ -8,7 +8,7 @@ $user=new User();
 $users_res=$user->getAllUsers();
 
 
-              echo "<table border=1>";
+              echo '<table border=1 class="t01" >';
               echo "<tr>
 
                 <td>Name</td>

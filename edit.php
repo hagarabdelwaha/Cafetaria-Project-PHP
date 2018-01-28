@@ -12,10 +12,6 @@ require_once('models/product_class.php');
 $check=false;
 
 
-//*************************************check name*******************
-
-
-
 //**********************************
 if($check)
 {
@@ -39,17 +35,26 @@ else
 
 $obj=new Product();
 
-//$pro_img='products_imgs/'.$_FILES['product_picture']['name'];
-
-//move_uploaded_file($_FILES['product_picture']['tmp_name'], $pro_img);
-
-
+// if(!empty($_POST['img']))
+// {
+//
+//   $pimg_path='products_imgs/'.$_FILES['img']['name'];
+//   echo $$pimg_path;
+//   move_uploaded_file($_FILES['img']['tmp_name'], $pimg_path);
+// }
 
 $obj->name=$_POST['product_name'];
 $obj->price=$_POST['product_price'];
 $obj->quantity=$_POST['product_quantity'];
 $obj->category_id=$_POST['category'];
-//$obj->imagepath=$pro_img;
+
+// if(isset($pro_img))
+// {
+//   $obj->imagepath=$pro_img;
+// }else {
+//   $obj->imagepath=$_SESSION['imgpath'];
+// }
+
 $obj->id=$_SESSION['proid'];
 
  $test=$obj->Edit_Product();
