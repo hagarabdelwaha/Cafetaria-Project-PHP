@@ -34,7 +34,7 @@ if($check)
 
 $_SESSION['usrname']=$_POST['user_name'];
 $_SESSION['room_number']=$_POST['rooms'];
-$_SESSION['extra_room']=$_POST['exrooms'];
+//$_SESSION['extra_room']=$_POST['exrooms'];
 
 
  $errors='</br> '.$err;
@@ -50,7 +50,7 @@ $eusr=new User();
 
 $eusr->name=$_POST['user_name'];
 $eusr->room_num=$_POST['rooms'];
-$eusr->ext_room=$_POST['exrooms'];
+//$eusr->ext_room=$_POST['exrooms'];
 $eusr->id=$_SESSION['usrid'];
 
 
@@ -64,7 +64,7 @@ $eusr->id=$_SESSION['usrid'];
 
  unset($_SESSION['usrname']);
   unset($_SESSION['room_number']);
-  unset($_SESSION['extra_room']);
+  //unset($_SESSION['extra_room']);
   unset($_SESSION['usrid']);
  // echo "product edited sucssessfully";
 

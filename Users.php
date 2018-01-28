@@ -4,6 +4,7 @@
 require_once('models/user_class.php');
 
 $user=new User();
+//<td>Ext.</td>
 
 $users_res=$user->getAllUsers();
 
@@ -14,7 +15,7 @@ $users_res=$user->getAllUsers();
                 <td>Name</td>
                 <td>Room</td>
                 <td>Image</td>
-                 <td>Ext.</td>
+                 
                 <td>Action</td>
                 </tr>";
 

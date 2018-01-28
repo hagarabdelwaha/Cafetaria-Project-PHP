@@ -24,8 +24,8 @@ public function __construct()
 
    $this->dbname="Cafeteria";
     $this->host="localhost";
-    $this->dbuser="go12";
-    $this->upasswd="1234";
+    $this->dbuser="rania";
+    $this->upasswd="rania2017";
   //data source name
    $this->dsn = "mysql:host=$this->host;dbname=$this->dbname";
 
