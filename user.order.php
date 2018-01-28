@@ -5,10 +5,9 @@
 <head>
 	<title>User Orders</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/Checks.css">
 </head>
 <body>
-<header class="container">
+<header>
 	<ul id="left-header" class="tab">
 		<li><a>Home</a></li> 
 		<li><a>My Orders</a></li>

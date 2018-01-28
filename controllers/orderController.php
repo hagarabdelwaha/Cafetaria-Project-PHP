@@ -34,7 +34,6 @@ else if (!isset($_POST) || empty($_POST)) {
 	//to be removed later
 	$_SESSION["user_id"] =1;
 	$_SESSION["products"] =( $order->selectProducts());
-	$_SESSION["rooms"] =( $order->selectRooms());
 	$_SESSION["latest_orders"] = $order->selectLastOrderProducts();
 
 	//echo json_encode($_SESSION["latest_orders"] );
@@ -48,18 +47,6 @@ if( /*$user->isAdmin()*/ 1){
 	$order->user_id = 1;//$_SESSION["user_id"];
 
 }
-
-
-
-
-/**
-	public $id;
-	public $user_id;
-	public $date;
-	public $price;
-	public $status;
-	public $notes;
-**/
 
 //remove this comment when session id is ready
 $order->id = NULL;
