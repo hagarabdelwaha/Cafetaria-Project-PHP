@@ -113,9 +113,22 @@ public function getAllProducts()
 }
 
 
-public function delete_product()
+
+public function delete_order()
 {
 
+     $query="delete  from orders where user_id= ?";
+     $param=[$this->id];
+     $usr=$this->db_connection->prepare($query);
+      $usr->execute($param);
+      return $usr->rowcount();
+
+}
+
+
+public function delete_product()
+{
+  $this->delete_order();
 
    $query="delete  from products where id= ?";
 

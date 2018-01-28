@@ -13,7 +13,7 @@ $extr_rooms=$exrom->get_rooms();
 if(!empty($_GET['id']))
 {
 
-  $_SESSION['usrid']=$_GET['id'];
+  $_SESSION['userid']=$_GET['id'];
 
    $usr=new User();
    $usr->id=$_GET['id'];

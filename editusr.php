@@ -47,32 +47,34 @@ else
 
 
 $eusr=new User();
-
 $eusr->name=$_POST['user_name'];
 $eusr->room_num=$_POST['rooms'];
-//$eusr->ext_room=$_POST['exrooms'];
-$eusr->id=$_SESSION['usrid'];
+
+$eusr->extra_room=$_POST['exrooms'];
+$eusr->id=$_SESSION['userid'];
 
 
 
-//echo $usr->name.$usr->room_num.$usr->ext_room.$usr->id;
+//echo $eusr->name.$eusr->room_num.$eusr->extra_room.$eusr->id;
 
  $t=$eusr->Edit_User();
 
- if($t>0)
- {
-
- unset($_SESSION['usrname']);
-  unset($_SESSION['room_number']);
-  //unset($_SESSION['extra_room']);
-  unset($_SESSION['usrid']);
- // echo "product edited sucssessfully";
-
 header("location:All_Users.php");
- }else
- {
- 	echo "not edited";
- }
+
+//  if($t > 0)
+//  {
+//
+//   unset($_SESSION['usrname']);
+//   unset($_SESSION['room_number']);
+//   unset($_SESSION['extra_room']);
+//   unset($_SESSION['userid']);
+//  // echo "product edited sucssessfully";
+//
+// header("location:All_Users.php");
+//  }else
+//  {
+//  	echo "not edited";
+//  }
 
 
 

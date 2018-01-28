@@ -8,7 +8,7 @@ class User
  public $email;
  public $password;
  public $room_num;
- public $ext_room;
+ public $extra_room;
  public $imagepath;
 
  //****************
@@ -46,11 +46,14 @@ class User
  public function Edit_User()
  {
 
-   $query="update users set  name=?,room_number=?,extra_room=? where id=?";
-   $edit_statm=$this->db_connection->prepare($query);
-   $edit_parameters=[$this->name,$this->room_num,$this->ext_room,$this->id];
-    $edit_statm->execute($edit_parameters);
-    return $edit_statm->rowcount();
+   //echo "try".$this->name.$this->room_num.$this->extra_room.$this->id;
+     $query="update users set  name=?,room_number=?,extra_room=? where id=?";
+  //  echo $query ;
+     $edit_statm=$this->db_connection->prepare($query);
+      $edit_parameters=[$this->name,$this->room_num,$this->extra_room,$this->id];
+    //echo $this->name.$this->room_num.$this->extra_room.$this->id;
+      $edit_statm->execute($edit_parameters);
+   return $edit_statm->rowcount();
 
  }
 
@@ -68,9 +71,21 @@ public function getAllUsers()
 }
 
 
-public function delete_user()
+public function delete_order()
 {
 
+     $query="delete  from orders where user_id= ?";
+     $param=[$this->id];
+     $usr=$this->db_connection->prepare($query);
+      $usr->execute($param);
+      return $usr->rowcount();
+
+}
+
+
+public function delete_user()
+{
+    $this->delete_order();
      $query="delete  from users where id= ?";
      $param=[$this->id];
      $usr=$this->db_connection->prepare($query);
