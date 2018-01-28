@@ -164,17 +164,17 @@ class Admin{
           $this->conn->close();
       }
 }
-// $usersName=array();
-// $admin=new Admin();
-// $admin->openDBconn();
+$usersName=array();
+$admin=new Admin();
+$admin->openDBconn();
 //$usersOrderTotal=$admin->selectUsersOrdersTotal('2018-01-27','2018-01-28');
 //$allUsersData=$admin->getforAllusers('2018-01-27','2018-01-28',$admin->matched_user,$usersOrderTotal);
 //
-// $drinks=$admin->getAllProductInfo();
-// $usersName=$admin->getCafeUsers();
-//
-// $admin->closeDBconn();
-// $arrLen=sizeof($usersName);
+$drinks=$admin->getAllProductInfo();
+$usersName=$admin->getCafeUsers();
+
+$admin->closeDBconn();
+$arrLen=sizeof($usersName);
 
 // echo "<br>".implode("",$allUsersData)."<br>";
 //  echo " users  ".implode ($admin->matched_user,", ")."<br>";
