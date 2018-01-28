@@ -49,11 +49,50 @@ class User extends Model
   if($matched)
   {
 
-      header('Location: ' ."../regist.php?");
+      header('Location: ' ."../controllers/userController.php?");
   }
   else{
       header('Location: ' ."../login.php?");
   }
   }
+
+
+public function selectLastId()
+{
+  $query = sprintf("select max(id) from %s ",$this->getTableName());
+
+  if(! $result_set = $this->prepareStmt($query)){
+    echo $this->conn->connect_error;
+    return false;
+  }
+  //$stmt->close();
+  return $this->getData($result_set)[0][0];
 }
+
+public function selectLastName()
+{
+  $query = sprintf("select name from %s order by id desc limit 1 ",$this->getTableName());
+
+  if(! $result_set = $this->prepareStmt($query)){
+    echo $this->conn->connect_error;
+    return false;
+  }
+  //$stmt->close();
+  echo $this->getData($result_set)[0][0];
+  return $this->getData($result_set)[0][0];
+}
+
+public function isAdmin()
+{
+  $isadmin=0;
+  if($_POST['email']=='omgamal@yahoo.com'){
+  $isadmin=1;
+  return $isadmin;
+  }
+}
+
+
+  }
+
+
 ?>
