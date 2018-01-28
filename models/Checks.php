@@ -38,7 +38,7 @@
               <datalist id="Clients" >
                   <?php
                     for($i=0;$i<$arrLen;$i++)
-									     echo "<option value=".$users[$i].">";
+									     echo "<option value=".$usersName[$i].">";
 									 ?>
               </datalist>
 
