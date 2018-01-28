@@ -1,5 +1,7 @@
 
-<?php /*check if ($user->isAdmin()) */ session_start(); ?>
+<?php include_once('models/user.php');
+$user = new User();
+if($user->isAdmin()){  session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,3 +114,7 @@
 	<script type="text/javascript" src="js/append_items_to_order.js"></script>
 </body>
 </html>
+<?php }else{
+	header('location:login.php');
+}
+?>

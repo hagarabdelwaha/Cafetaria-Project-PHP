@@ -25,7 +25,7 @@ for (var i = figures.length - 1; i >= 0; i--) {
 
 
 		var quantity = this.getElementsByClassName("quantity")[0].value;
-		console.log(quantity);
+		// console.log(quantity);
 		var plusBtn = document.createElement("button");
 		plusBtn.className="plusBtn";
 
@@ -37,6 +37,7 @@ for (var i = figures.length - 1; i >= 0; i--) {
 
 		var priceLabel = document.createElement("label");
 		var price = this.getAttribute("price");
+
 		priceLabel.textContent = " EGP "+price;
 		priceLabel.style.display ="inline-block";
 		priceLabel.setAttribute("name", "prices[]");
@@ -78,8 +79,12 @@ for (var i = figures.length - 1; i >= 0; i--) {
 			e.preventDefault();
 			if(input.value > 1){
 				input.value = Number(input.value)-1;
+				console.log(input.value);
 				priceLabel.textContent = " EGP "+(Number(price)*Number(input.value));
-				total.textContent = Number(total.textContent)+(Number(price));
+				console.log(price);
+				console.log(total.textContent);
+				total.textContent = Number(total.textContent)-(Number(price));
+
 				totalInput.value = total.textContent;
 
 			}

@@ -9,15 +9,15 @@ session_start();
 
 // include("../models/orders.php");
 $order = new Order();
-echo json_encode($_POST);
+//echo json_encode($_POST);
 
 
 
 $user = new User();
-if(/*$user->isAdmin()*/ 1 ){
+if($user->isAdmin()){
 	echo json_encode($user->getAllUsers());
 	$_SESSION['all_users'] = $user->getAllUsers();
-	//exit;
+	exit;
 }
 
 if(isset($_POST["search_submit"]) && !empty($_POST["search_submit"])){
@@ -32,6 +32,8 @@ if(isset($_POST["search_submit"]) && !empty($_POST["search_submit"])){
 }
 else if (!isset($_POST) || empty($_POST)) {
 	//to be removed later
+	echo 1;
+	exit;
 	$_SESSION["user_id"] =1;
 	$_SESSION["products"] =( $order->selectProducts());
 	$_SESSION["latest_orders"] = $order->selectLastOrderProducts();
@@ -41,11 +43,13 @@ else if (!isset($_POST) || empty($_POST)) {
 	  exit;
 }
 
-if( /*$user->isAdmin()*/ 1){
+if( $user->isAdmin()){
 	$order->user_id = $_POST["user_id"];
 }else if (isset($_SESSION["user_id"])) {
-	$order->user_id = 1;//$_SESSION["user_id"];
-
+	$order->user_id =$_SESSION["user_id"];
+}else{
+	header("location:../login.php");
+	 exit;
 }
 
 //remove this comment when session id is ready

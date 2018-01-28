@@ -1,12 +1,14 @@
-<?php include("Model.php");
+<?php 
+include("Model.php");
 class User extends Model
 {
   public $id;
   public $name;
   public $email;
-  public $room_no;
+  public $room_number;
+  public $extra_room;
   public $image_path;
-  public $psw;
+  public $password;
 
   function __construct()
   {
@@ -15,6 +17,7 @@ class User extends Model
 
   public function login()
   {
+    session_start();
   ini_set('display_errors','On');
   error_reporting(E_ALL);
 
@@ -29,22 +32,43 @@ class User extends Model
   $matched="";
   $retEmail="";
 
-  $sql = "SELECT email FROM users WHERE email = ? and password = ? ";
+  $sql = "SELECT email,id,name FROM users WHERE email = ? and password = ? ";
 
   $stmt = $conn->stmt_init();
   if ($stmt->prepare($sql)) {
     $email=$_POST['email'];
-    $psw=$_POST['psw'];
-    $psw=md5($psw);
-    $stmt->bind_param("ss",$email,$psw);
+    $password=$_POST['psw'];
+    $password=md5($password);
+    $stmt->bind_param("ss",$email,$password);
     $stmt->bind_result($retEmail);
     $result = $stmt->execute();
     $fetch = $stmt->fetch();
+
     if($result && $fetch)
         if($retEmail)
           $matched=1;
 
+  
+    //$login_user = $this->select($variableList);
+    $query = "select id,name,email from users where email='".$_POST['email']."'";
+    // $query = sprintf("select * from products");
+    if(! $result_set = $this->prepareStmt($query)){
+      echo $this->conn->connect_error;
+          echo " msh tmam";
+      return false;
+    }
+    //$stmt->close();
+    $data= $this->getData($result_set);
+
+    //echo "sss".json_encode($data);
+    $_SESSION['user_id']=$data[0][0];
+    //echo $_SESSION['user_id'];
+    $_SESSION['username']=$data[0][1];
+    $_SESSION['email']=$data[0][2];
+    //echo $_SESSION['username'];
+    
     $stmt->close();
+
   }
   if($matched)
   {
@@ -53,9 +77,10 @@ class User extends Model
   }
   else{
       header('Location: ' ."../login.php?");
+      exit;
   }
   }
-<<<<<<< HEAD
+
 
 
 public function selectLastId()
@@ -79,9 +104,10 @@ public function selectLastName()
     return false;
   }
   //$stmt->close();
-  echo $this->getData($result_set)[0][0];
   return $this->getData($result_set)[0][0];
-=======
+}
+
+
   public function getAllUsers()
   {
     if(!$users = $this->select(["id"=>"id","name"=>"name",0]) ) {
@@ -91,20 +117,14 @@ public function selectLastName()
         return $users;
       }
   }
->>>>>>> 35ab2d88c9d18229f018ade97d455c8ce3edc9bf
-}
 
 public function isAdmin()
 {
   $isadmin=0;
-  if($_POST['email']=='omgamal@yahoo.com'){
-  $isadmin=1;
-  return $isadmin;
-  }
+  if((isset($_POST['email']) && $_POST['email']=='omgamal@yahoo.com')
+  || (isset($_SESSION['email']) && $_SESSION['email'] =='omgamal@yahoo.com')){
+    $isadmin=1;
+    return $isadmin;
 }
-
-
-  }
-
-
-?>
+}
+}

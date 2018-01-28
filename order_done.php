@@ -10,3 +10,8 @@
 </section>
 </body>
 </html>
+<?php 
+	// sleep(10);
+	// header("location:models/AdminHomeAll.php");
+	// exit;
+?>

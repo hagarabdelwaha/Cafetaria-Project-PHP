@@ -6,7 +6,7 @@ class Model{
 
 	public function __construct(){
 		////CHANGE THIS CREDINTIALS TO YOURS YA MENNA , HAGER AND ALAA
-		$this->conn = new \mysqli("localhost","menna","54321again","Cafeteria");
+		$this->conn = new \mysqli("localhost","rania","rania2017","Cafeteria");
 		if (! $this->conn ) {
 			echo "connection error";
 		}

@@ -91,17 +91,20 @@ class Admin extends Model
 
 
     $stmt=$conn->stmt_init();
-    $sql = "insert into users values(NULL,?,?,?,?,?)";
+    $sql = "insert into users values(NULL,?,?,?,?,?,?)";
     $inserted="";
     if($stmt->prepare($sql))
     {
       //echo "<br />hereee";
-      $stmt->bind_param("sssss",$email,$psw_hash,$file,$roomno,$name);
+      $stmt->bind_param("ssssss",$email,$psw_hash,$file,$roomno,$name,$ext);
       $result=$stmt->execute();
+      echo $result;
       //echo $sql;
       $inserted=$result;
-      //echo "<br /> aaaaaaaaaaaaaaaa".$inserted."eee".$result;
+      echo "<br /> aaaaaaaaaaaaaaaa".$inserted."eee".$result;
       $stmt->close();
+    }else{
+      echo "errrror";
     }
     //echo "<br />fff".$inserted;
 
