@@ -27,6 +27,13 @@ $users_res=$user->getAllUsers();
 		     	echo "<tr>";
                foreach ($row as $key => $value)
                         {
+                          if($key=="name")
+                          {
+                            if($value=="Deleted")
+                            {
+                                break;
+                            }
+                          }
 
                             	if($key=="id")
                             	{
@@ -47,14 +54,19 @@ $users_res=$user->getAllUsers();
 
 			             }
 
-				echo "<td>
-				  <a href= edit_user.php?id=$rowid> Edit </a>
-				  <a href= delete_user.php?id=$rowid> Delete </a>
-				  </td>
-				  ";
+
+         if(!empty($rowid))
+         {
+           echo "<td>
+   				  <a href= edit_user.php?id=$rowid> Edit </a>
+   				  <a href= delete_user.php?id=$rowid> Delete </a>
+   				  </td>
+   				  ";
 
 
-                echo "</tr>";
+                   echo "</tr>";
+         }
+
 		        }
 
 		         echo "</table>";

@@ -196,7 +196,7 @@ if(!empty($_GET['id']))
 
  <tr>
  	<td><input type="submit" name="btn_Save" value="Edit"></td>
- 	<td><input type="reset" name="btn_rest"></td>
+ 	<!-- <td><input type="reset" value="Reset" name="btn_rest"></td> -->
  </tr>
  <tr>
  	<td colspan="2"> <center><label name="lblerror" style="color: red"> <?php
