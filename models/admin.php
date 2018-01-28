@@ -1,4 +1,4 @@
-<?php include("Model.php");
+<?php include_once("Model.php");
 class Admin extends Model
 {
 

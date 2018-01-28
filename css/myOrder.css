@@ -1,0 +1,130 @@
+
+body{
+  width:90%;
+  height:100%;
+  margin-left: 200px;
+
+  border-width: thick;
+  border-color: black;
+}
+input[type=submit]{
+    background-color:gray;
+    color: white;
+    padding: 14px 20px;
+    margin: 2px 0;
+    border: none;
+    cursor: pointer;
+    margin-left:50%;
+    width: 10%;
+}
+.container{
+  width:70%;
+  height:100%;
+  border: 2px solid #ccc;
+
+}
+.tab {
+overflow: hidden;
+border: 1px solid #ccc;
+background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+background-color: inherit;
+float: left;
+border: none;
+outline: none;
+cursor: pointer;
+padding: 14px 16px;
+transition: 0.3s;
+font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+display: none;
+padding: 6px 12px;
+border: 1px solid #ccc;
+border-top: none;
+}
+
+div{
+  padding: 20px;
+}
+.t2{
+  padding: 3px;
+}
+.item{
+  width:90%;
+  margin-left:5%;
+  padding-top: 0px;
+}
+
+table {
+    width:100%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding-top: 10px;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+table.t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table.t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table.t01 th {
+    background-color: black;
+    color: white;
+}
+img {
+    display: inline;
+    border-radius: 25px;
+    width:20px;
+    height:20px;
+    cursor:pointer;
+    padding: 5px;
+}
+#userImg{
+  margin-left: 100px;
+  width:70px;
+  height:70px;
+  padding:0px;
+  cursor:pointer;
+}
+#clientList{
+  width:220px;
+  height:35px;
+}
+.drink{
+  width:100px;
+  height:100px;
+}
+.drinksRaw{
+  border: 0;
+  text-align:center;
+  vertical-align:middle;
+}
+label{
+  padding-left: 30px;
+}
+table{
+  padding: 10px;
+}
