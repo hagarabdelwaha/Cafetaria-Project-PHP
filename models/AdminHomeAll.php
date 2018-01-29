@@ -16,9 +16,9 @@ $user = new User();
 <div class="container">
     <div class="tab">
         <button class="tablinks">Home</button>
-        <button class="tablinks" >Produts</button>
-        <button class="tablinks">Users</button>
-        <button class="tablinks">Manual</button>
+        <button class="tablinks"><a href="../All_Products.php">Produts</a></button>
+        <button class="tablinks"><a href="../All_Products.php">Users</a></button>
+         <button class="tablinks"><a href="../admin.order.php">Manual Order</button> -->
         <a class="tablinks" href="../controllers/logoutController.php">Logout</a>
         <button class="tablinks" onClick="document.location.href='Checks.php'" >Checks</button>
 

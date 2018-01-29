@@ -21,7 +21,7 @@
  -->		<li><a href="controllers/logoutController.php">Logout</a></li>
 		    <li><a>My Orders</a></li>
 	</ul>
-	<div id="right-header"><img  src="imgs/person.png"><h3 id="username">User Name</h3>
+	<div id="right-header"><img  src="imgs/person.png"><h3 id="username"><?php echo $_SESSION['username']; ?></h3>
 	</div>
 
 </header>

@@ -10,7 +10,7 @@
 		<a href="models/AdminHomeAll.php">Home</a>
 		<a href="All_Products.php">Products</a>
 		<a href="All_Users.php">Users</a>
-		<a href="order_done.php">Manual Order</a>
+		<a href="admin.order.php">Manual Order</a>
 		<a href="models/Checks.php">Checks</a>
 
 		<img id="userImg" src="imgs/user.png" width="40" height="40"/>

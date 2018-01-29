@@ -17,12 +17,12 @@ $user = new User();
 <div class="container">
     <div class="tab">
         <button class="tablinks" onClick="document.location.href='AdminHomeAll.php'">Home</button>
-        <button class="tablinks" >Produts</button>
-        <button class="tablinks">Users</button>
-        <button class="tablinks">Manual</button>
+        <button class="tablinks"><a href="../All_Products.php">Produts</a></button>
+        <button class="tablinks"><a href="../All_Products.php">Users</a></button>
+        <button class="tablinks"><a href="../admin.order.php">Manual</a></button>
         <button class="tablinks">Checks</button>
         <img id="userImg" src="../imgs/user.png"/>
-        <label name="UserName">user name Islam</label>
+        <label name="UserName">Admin</label>
     </div>
 
       <div>

@@ -25,7 +25,10 @@ if(isset($_POST["search_submit"]) && !empty($_POST["search_submit"])){
 	$_SESSION["products"] =( $order->selectSearchProducts($_POST["search_key"]));
 	
 	$_SESSION["latest_orders"] = $order->selectLastOrderProducts();
-
+	if($user->isAdmin()){
+		header("location:../admin.order.php");
+	 	exit;
+	}
 	  header("location:../user.order.php");
 	  exit;
 }
@@ -37,6 +40,10 @@ else if (!isset($_POST) || empty($_POST) && $_SESSION['login']) {
 	$_SESSION["latest_orders"] = $order->selectLastOrderProducts();
 
 	//echo json_encode($_SESSION["latest_orders"] );
+	if($user->isAdmin()){
+		header("location:../admin.order.php");
+	 	exit;
+	}
 	  header("location:../user.order.php");
 	  exit;
 }
@@ -87,7 +94,10 @@ if($order->insertOrder()){
 		$order->insertOrderProducts(array($product_ids[$i],$product_quantites[$i],$order_id));
 	}
     $_SESSION["latest_orders"] = $order->selectLastOrderProducts();
-
+    if($user->isAdmin()){
+		header("location:../admin.order.php");
+	 	exit;
+	}
 	 header("location:../user.order.php?success=1");
 	 exit;
 }

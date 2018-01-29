@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -14,7 +15,7 @@
         <button class="tablinks" >My Orders</button>
 
         <img id="userImg" src="user.png"/>
-        <label name="UserName">user name Islam</label>
+        <label name="UserName"><?php echo $_SESSION['username']; ?></label>
     </div>
 
       <div>

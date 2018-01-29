@@ -16,10 +16,11 @@ if($user->isAdmin()){
 <body>
 <header>
 	<ul id="left-header">
-		<li><a>Home</a></li> 
-		<li><a>My Orders</a></li>
+		<li><a href="models/AdminHomeAll.php">Home</a></li> 
+        <li><a href="All_Products.php">Produts</a></li>
+        <li ><a href="All_Users.php">Users</a></li>
 	</ul>
-	<div id="right-header"><img  src="imgs/person.png"><h3 id="username">User Name</h3>
+	<div id="right-header"><img  src="imgs/person.png"><h3 id="username">Admin</h3>
 	</div>
 
 </header>
