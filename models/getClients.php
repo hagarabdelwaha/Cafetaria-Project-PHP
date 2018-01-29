@@ -31,6 +31,67 @@ class Admin{
         }
         return $drinks;
     }
+/////////////////////
+public function GetProcessingOrdersId(){
+  $processedOrdersId=array();
+  $sql = "select orders.id  from
+  orders,users  where status='processing' group by (orders.id);  ";
+  $stmt = $this->conn->stmt_init();
+  if ($stmt->prepare($sql)) {
+    $stmt->bind_result($OrderId);
+    $result = $stmt->execute();
+   while($fetch = $stmt->fetch()) {
+         array_push($processedOrdersId,$OrderId);
+      }
+    $stmt->close();
+      }
+    return $processedOrdersId;
+
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+public function GetProcessingOrdersItem($orderId){
+  //$processedOrdersItem=array();
+  $ordersQuan="";
+  $ordersItem="";
+  $sql = "select order_products.quantity,products.name from orders,users,products,order_products
+   where  orders.user_id=users.id and products.id=order_products.product_id and
+    order_products.order_id=orders.id and  orders.id=?;";
+  $stmt = $this->conn->stmt_init();
+  if ($stmt->prepare($sql)) {
+    $stmt->bind_param('s',$orderId);
+    $stmt->bind_result($OrderQuan,$orderItem);
+    $result = $stmt->execute();
+   while($fetch = $stmt->fetch()) {
+        $ordersQuan.=$OrderQuan.",";
+        $ordersItem.=$orderItem.",";
+         //array_push($processedOrdersId,$OrderId);
+      }
+      $ordersQuan=rtrim($ordersQuan,",");
+      $ordersItem=rtrim($ordersItem,",");
+    $stmt->close();
+      }
+    return $ordersItem.":".$ordersQuan;
+}
+    ///////////////////////////
+  public function GetProcessingOrders(){
+    $processedOrders=array();
+    $sql = "select users.name,orders.date ,orders.price,orders.room_id
+     from orders,users  where status='processing' and users.id=orders.user_id; ";
+    $stmt = $this->conn->stmt_init();
+    if ($stmt->prepare($sql)) {
+      $stmt->bind_result($Uname,$orderDate,$orderPrice,$orderRoom);
+      $result = $stmt->execute();
+     while($fetch = $stmt->fetch()) {
+           array_push($processedOrders,$Uname.":".$orderDate.":".$orderPrice.":".$orderRoom);
+        }
+      $stmt->close();
+        }
+      return $processedOrders;
+    }
+
+    ///////////////////////////
 
   public function getCafeUsers(){
 

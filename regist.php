@@ -63,6 +63,7 @@
  /* Style the buttons inside the tab */
  .tab button {
  background-color: inherit;
+ display:inline;
  float: left;
  border: none;
  outline: none;
