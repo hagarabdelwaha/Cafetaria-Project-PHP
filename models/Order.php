@@ -74,17 +74,24 @@ class Order extends Model{
 	}
 	public function selectLastOrderProducts()
 	{
-		$order_id = $this->selectLastOrderId();
-		$query = sprintf("select product_id from order_products where order_id=%s order by order_id desc",$order_id,$_SESSION['user_id']);
+		if(! $order_id = $this->selectLastOrderId())
+			$order_id = -1;
 
+
+
+		$query = sprintf("select product_id from order_products where order_id=%s order by order_id desc limit 3",$order_id);
+echo $order_id. " ". $query." ".$_SESSION["user_id"];
+//exit;
 		if(! $result_set = $this->prepareStmt($query)){
 			echo $this->conn->connect_error;
+
 			return false;
 		}
+
 		//$stmt->close();
 		//return 
+
 		$product_ids = $this->getColumnData($result_set);
-		echo "sss:".json_encode($product_ids);
 		$query = sprintf("select * from products where id in (%s)",implode(",", ($product_ids)));
 
 		if(! $result_set = $this->prepareStmt($query)){
@@ -115,19 +122,18 @@ class Order extends Model{
 	}
 
 
-	//to be removed later 
-	public function selectProducts()
-	{
-		$query = sprintf("select * from products where quantity > 0");
+	// public function selectProducts()
+	// {
+	// 	$query = sprintf("select * from products where quantity > 0");
 
-		if(! $result_set = $this->prepareStmt($query)){
-			echo $this->conn->connect_error;
-			return false;
-		}
-		//$stmt->close();
-		return $this->getData($result_set);
+	// 	if(! $result_set = $this->prepareStmt($query)){
+	// 		echo $this->conn->connect_error;
+	// 		return false;
+	// 	}
+	// 	//$stmt->close();
+	// 	return $this->getData($result_set);
 
-	}
+	// }
 
 	public function selectSearchProducts($product_name)
 	{

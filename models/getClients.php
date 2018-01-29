@@ -8,7 +8,7 @@ class Admin{
   private $conn;
   public $matched_user=array();
   public function openDBconn(){
-      $this->conn= new mysqli("localhost","alaa","1111");
+      $this->conn= new mysqli("localhost","rania","rania2017");
       mysqli_select_db($this->conn, "cafe");
 
       if ($this->conn->connect_errno) {

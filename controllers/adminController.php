@@ -2,4 +2,5 @@
 
 $admin= new Admin();
 $admin->addUser();
+header('location:../admin.order.php');
 ?>

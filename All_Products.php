@@ -1,3 +1,8 @@
+<?php include_once('models/user.php');
+session_start();
+$user = new User();
+
+if($user->isAdmin()){    ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,3 +38,7 @@ require_once('Products.php');
 
 </body>
 </html>
+<?php }else{
+  header('location:user.order.php');
+}
+?>

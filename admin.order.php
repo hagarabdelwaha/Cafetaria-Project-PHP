@@ -1,7 +1,12 @@
 
-<?php include_once('models/user.php');
+<?php
+session_start();
+include_once('models/user.php');
+ if(!isset($_SESSION['all_users']) && empty($_SESSION['all_users']))
+ 	header('location:controllers/orderController.php');
 $user = new User();
-if($user->isAdmin()){  session_start(); ?>
+if($user->isAdmin()){
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,31 +32,13 @@ if($user->isAdmin()){  session_start(); ?>
 </section>
 
 <section>
-
-	<div class ="container">
-	<h3 class="latest_order_header">Latest Order</h3>
-		<?php 
-		foreach($_SESSION["latest_orders"] as $product ){ ?>
-		<figure class="item" name="<?php echo $product[1]; ?>"
-		price="<?php echo $product[2]; ?>" id="<?php echo $product[0]; ?>" >
-			<img src="imgs/can2.png" width="35px">
-			<figcaption><?php echo $product[1]; ?></figcaption>
-			<figcaption><?php echo $product[2]."LE" ; ?></figcaption>
-			<input type="hidden" class="quantity" value="<?php echo $product[3]; ?>">
-		</figure>
-		<?php } ?>
-	</div>
-	<hr>
-</section>
-
-<section>
 	<br>
 	<div id="container" class="container">
 		<?php 
 		foreach($_SESSION["products"] as $product ){ ?>
 		<figure class="item" name="<?php echo $product[1]; ?>"
 		price="<?php echo $product[2]; ?>" id="<?php echo $product[0]; ?>" >
-			<img src="imgs/can2.png" width="35px">
+			<img src="<?php echo isset($product[5])&& !empty($product[5])?$product[5]:'imgs/coffe.png' ?>" width="35px">
 			<figcaption><?php echo $product[1]; ?></figcaption>
 			<figcaption><?php echo $product[2]."LE" ; ?></figcaption>
 			<input type="hidden" class="quantity" value="<?php echo $product[3]; ?>">

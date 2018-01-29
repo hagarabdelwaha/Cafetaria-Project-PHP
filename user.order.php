@@ -1,5 +1,13 @@
 
-<?php session_start(); ?>
+<?php session_start();
+
+
+ if(!isset($_SESSION["latest_orders"])) {
+ 	header('location:controllers/orderController.php');
+}
+ if(!isset($_SESSION['login']) && empty($_SESSION['login']))
+ 	header('location:login.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +17,9 @@
 <body>
 <header>
 	<ul id="left-header" class="tab">
-		<li><a>Home</a></li> 
-		<li><a>My Orders</a></li>
+<!-- 		<li><a>Home</a></li> 
+ -->		<li><a href="controllers/logoutController.php">Logout</a></li>
+		    <li><a>My Orders</a></li>
 	</ul>
 	<div id="right-header"><img  src="imgs/person.png"><h3 id="username">User Name</h3>
 	</div>
@@ -22,7 +31,15 @@
 		<input type="submit" name="search_submit">
 	</form>
 </section>
+<?php 
+if(isset($_GET['success']) && !empty($_GET['success']))
+	echo "<section  style='height:10px;text-align: center;'>
+	<label>Your Order will be ready in 10 minutes,Thank You</label>
+</section>";
 
+?>
+<?php if(isset($_SESSION["latest_orders"]) && !empty($_SESSION["latest_orders"])){
+?>
 <section>
 
 	<div class ="container">
@@ -31,15 +48,16 @@
 		foreach($_SESSION["latest_orders"] as $product ){ ?>
 		<figure class="item" name="<?php echo $product[1]; ?>"
 		price="<?php echo $product[2]; ?>" id="<?php echo $product[0]; ?>" >
-			<img src="imgs/can2.png" width="35px">
+			<img src="<?php echo isset($product[5])&& !empty($product[5])?$product[5]:'imgs/coffe.png' ?>" width="35px">
 			<figcaption><?php echo $product[1]; ?></figcaption>
 			<figcaption><?php echo $product[2]."LE" ; ?></figcaption>
 			<input type="hidden" class="quantity" value="<?php echo $product[3]; ?>">
 		</figure>
-		<?php } ?>
+		<?php }  ?>
 	</div>
 	<hr>
 </section>
+		<?php }  ?>
 
 <section>
 	<br>
@@ -48,40 +66,13 @@
 		foreach($_SESSION["products"] as $product ){ ?>
 		<figure class="item" name="<?php echo $product[1]; ?>"
 		price="<?php echo $product[2]; ?>" id="<?php echo $product[0]; ?>" >
-			<img src="imgs/can2.png" width="35px">
+			<img src="<?php echo (isset($product[5]) && !empty($product[5]))?$product[5]:'imgs/coffe.png' ?>" width="35px">
 			<figcaption><?php echo $product[1]; ?></figcaption>
 			<figcaption><?php echo $product[2]."LE" ; ?></figcaption>
 			<input type="hidden" class="quantity" value="<?php echo $product[3]; ?>">
 		</figure>
-		<?php } ?>
-
-		<!-- <figure class="item">
-			<img src="imgs/can2.png" width="35px">
-			<figcaption>Ice TeaTeaTea</figcaption>
-		</figure>
-
-		<figure class="item">
-			<img src="imgs/can2.png" width="35px">
-			<figcaption>Ice TeaTeaTea</figcaption>
-		</figure>
-
-		<figure class="item">
-			<img src="imgs/can2.png" width="35px">
-			<figcaption>Ice TeaTeaTea</figcaption>
-		</figure>
-
-		<figure class="item">
-			<img src="imgs/can2.png" width="35px">
-			<figcaption>Ice TeaTeaTea</figcaption>
-		</figure>
-
-		<figure class="item">
-			<img src="imgs/can2.png" width="35px">
-			<figcaption>Ice TeaTeaTea</figcaption>
-		</figure> -->
-		
+		<?php } ?>		
 	</div>
-	
 </section>
 <aside>
 		<form method="post" action="controllers/orderController.php">

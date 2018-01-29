@@ -1,3 +1,7 @@
+<?php include_once('user.php');
+session_start();
+$user = new User();
+ if($user->isAdmin()){  ?>
 <!DOCTYPE html>
 <?php include 'getClients.php';?>
 
@@ -71,3 +75,7 @@
 
 
 </html>
+<?php }else{
+   header('location:../user.order.php');
+ }
+?>

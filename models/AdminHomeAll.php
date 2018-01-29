@@ -1,3 +1,8 @@
+<?php include_once('user.php');
+ob_start();
+session_start();
+$user = new User();
+  if($user->isAdmin()){   ?>
 <!DOCTYPE html>
 <?php include 'returnCurrentOrder.php';?>
 <html lang="en">
@@ -14,10 +19,11 @@
         <button class="tablinks" >Produts</button>
         <button class="tablinks">Users</button>
         <button class="tablinks">Manual</button>
+        <a class="tablinks" href="../controllers/logoutController.php">Logout</a>
         <button class="tablinks" onClick="document.location.href='Checks.php'" >Checks</button>
 
         <img id="userImg" src="../imgs/user.png"/>
-        <label name="UserName">user name Islam</label>
+        <label name="UserName">Admin </label>
     </div>
 
       <div>
@@ -52,3 +58,7 @@
 		</div>
   </body>
 </html>
+ <?php }else{
+  header('location:../admin.order.php');
+}
+?>

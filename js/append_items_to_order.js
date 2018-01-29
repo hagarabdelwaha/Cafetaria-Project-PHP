@@ -79,14 +79,13 @@ for (var i = figures.length - 1; i >= 0; i--) {
 			e.preventDefault();
 			if(input.value > 1){
 				input.value = Number(input.value)-1;
-				console.log(input.value);
+				// console.log(input.value);
 				priceLabel.textContent = " EGP "+(Number(price)*Number(input.value));
-				console.log(price);
-				console.log(total.textContent);
+				// console.log(price);
+				// console.log(total.textContent);
 				total.textContent = Number(total.textContent)-(Number(price));
 
 				totalInput.value = total.textContent;
-
 			}
 		});
 

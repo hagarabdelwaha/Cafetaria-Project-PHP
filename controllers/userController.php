@@ -4,15 +4,18 @@
  session_start();
  $user = new User();
  $user->login();
-$_SESSION['user_id']=$user->selectLastId();
+
+//$_SESSION['user_id']=$user->selectLastId();
 //echo $_SESSION['user_id'];
-$_SESSION['username']=$user->selectLastName();
+//$_SESSION['username']=$user->selectLastName();
 //echo $_SESSION['username'];
 if($user->isAdmin()){
-  $admin= new Admin();
-  
-}
-header("location:../models/AdminHomeAll.php");
 
+  $admin= new Admin();
+  header("location:../models/AdminHomeAll.php");
+  exit;
+}
+
+header("location:../user.order.php");
 exit;
 ?>

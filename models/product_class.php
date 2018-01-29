@@ -1,6 +1,6 @@
 <?php
-
-class Product
+include_once('Model.php');
+class Product extends Model
 {
 
  public $id;
@@ -21,7 +21,7 @@ public $db_connection ;
 
 public function __construct()
 {
-
+  parent::__construct();
    $this->dbname="Cafeteria";
     $this->host="localhost";
     $this->dbuser="rania";
@@ -168,7 +168,18 @@ public function get_product()
 
 }
 
+public function selectProducts()
+  {
+    $query = sprintf("select * from products where quantity > 0");
 
+    if(! $result_set = $this->prepareStmt($query)){
+      echo $this->conn->connect_error;
+      return false;
+    }
+    //$stmt->close();
+    return $this->getData($result_set);
+
+  }
 
 }
 
