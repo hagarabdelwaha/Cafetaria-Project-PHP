@@ -73,7 +73,6 @@ public function GetProcessingOrdersItem($orderId){
     $stmt->close();
       }
     return $ordersItem.":".$ordersQuan;
-
 }
     ///////////////////////////
   public function GetProcessingOrders(){

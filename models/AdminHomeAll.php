@@ -40,10 +40,7 @@
 
        for(var num=0;num<arr_length;num++){
 			    var order = orders_Array[num].split(":");
-					  // console.log(order)
-					  // console.log(order[0],order[1],order[2],order[3],order[4].split(','),order[5].split(','),order[6],productsInfo_arr)
-
-					 update_html(order[1],order[0],order[3],order[3],order[4].split(','),order[5].split(','),order[2],productsInfo_arr);
+				 update_html(order[1],order[0],order[3],order[3],order[4].split(','),order[5].split(','),order[2],productsInfo_arr);
 		  }
      // console.log(order_date);
 		</script>
