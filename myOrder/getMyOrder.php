@@ -11,7 +11,7 @@ $end_date=$_REQUEST['endDate'];
 function getAllUsersOrders(){
 
 }
-$conn = new mysqli("localhost","menna","54321again");
+$conn = new mysqli("localhost","rania","rania2017");
 mysqli_select_db($conn,"Cafeteria");
 if($conn->connect_errno) {
 trigger_error($conn->connect_error);
