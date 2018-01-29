@@ -1,5 +1,5 @@
 var container=document.getElementsByClassName('container')[0];
-var total=document.getElementById('total');
+
 var lenArr;
 var ordersArr;
 var productsInfo_arr;
@@ -11,13 +11,14 @@ var datesel="";
 var ordereditemArr=[];
 var items_numArr=[];
 
+
 function creatdrink(drinkname){
 
 	var td=document.createElement('td');
 	 td.setAttribute('class','drinksRaw')
 	var img=document.createElement('img');
 	img.setAttribute('class','drink')
-	img.src='../imgs/'+drinkname+'.png'
+	img.src=drinkname+'.png'
 	td.appendChild(img)
 	 return td;
 }
@@ -25,14 +26,17 @@ function creatdrink(drinkname){
 function getProductprice(drinkname)
 {
 	var len=productsInfo_arr.length;
-	for(var i=0;i<len;i++)
+	console.log(len,productsInfo_arr);
+
+  for(var i=0;i<len;i++)
 	 {
      prod_info=productsInfo_arr[i].split(",");
-		 if(drinkname==prod_info[0])
-		   return prod_info[1];
+		 if(drinkname == prod_info[0])
+		 {
+			 return prod_info[1];
+		 }
    }
 }
-
 
 function creatdrinkName(drinkname,price){
 	var td=document.createElement('td');
@@ -62,7 +66,7 @@ function showUserOrder(e){
 						div.appendChild(tableimg);
 
 						datesel=e.target.nextSibling.textContent;
-						//console.log(datesel)
+						console.log(datesel)
 					 	for(var i=0;i<lenArr;i++)
 					 	{
 					 		orderU=ordersArr[i].split(':');
@@ -71,19 +75,19 @@ function showUserOrder(e){
 									items_num=orderU[4];
 									ordereditemArr=ordereditem.split(',');
 									items_numArr=items_num.split(',');
-									//console.log(ordereditemArr);
-									//console.log(items_numArr);
+									console.log(ordereditemArr);
+									console.log(items_numArr);
 
 
 							}
 						}
 							 len=ordereditemArr.length;
-							 //console.log(len);
+							 console.log(len);
 							 var tr1=document.createElement('tr')
 							 var tr2=document.createElement('tr')
 							 var tr3=document.createElement('tr')
 							 for(var i=0;i<len;i++){
-								 //console.log(ordereditemArr[i])
+								 console.log(ordereditemArr[i])
 							       tr1.appendChild(creatdrink(ordereditemArr[i]))
 
 													}
@@ -103,19 +107,16 @@ function showUserOrder(e){
 							      				div.appendChild(tableimg);
 							  				drinksDisplayed=1;
 												container.appendChild(div);
-												total.appendChild(createTotalAmount(55));
-
+												container.appendChild(createTotalAmount(55));
 
 
 	}
-
 	else{
 		 console.log(container.lastChild)
 		 container.removeChild(container.lastChild);
-		 total.removeChild(total.lastChild);
-
 	   drinksDisplayed=0;
 	 }
+
 
 }
 
@@ -140,7 +141,7 @@ function creatDateField(date,fnDate){
 	var td=document.createElement('td');
 	var thtext=document.createTextNode(date);
 	var img=document.createElement('img');
-	img.src='imgs/show.png'
+	img.src='show.png'
 	img.addEventListener('click',fnDate);
 	td.appendChild(img)
 	td.appendChild(thtext);
@@ -179,8 +180,6 @@ function update_order_HTML(Orderdate,status,amount){
 		 r2.appendChild(createTabledata('td'," "));
 
 	 }
-
-
 	 table.appendChild(r2)
 	//  container.appendChild(table);
 
@@ -192,13 +191,14 @@ function update_order(length,OrdersArray,productInfo){
 	 ordersArr=OrdersArray;
 	 productsInfo_arr=productInfo;
 
-	 //console.log(length,OrdersArray);
+	 console.log(length,OrdersArray);
 	 buildTable();
 	 for(var i=0;i<length;i++)
-	 {
-		 orderU=OrdersArray[i].split(':');
-		 //console.log(orderU[0],orderU[1],orderU[2])
-		update_order_HTML(orderU[0],orderU[1],orderU[2])
-	 }
+	  {
+		 orderU=OrdersArray[i].split(',');
+		  console.log("takloooof");
+		  console.log(orderU[0],orderU[1],orderU[2])
+		  update_order_HTML(orderU[0],orderU[1],orderU[2])
+	  }
 
 }
